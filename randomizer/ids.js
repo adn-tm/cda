@@ -1,19 +1,19 @@
-function generateSnils() {
-    const rnd = Math.floor(Math.random() * 999999999)
-    const number = leftPad('' + rnd, 9, '0')
-
-    let sum = number
-        .split('')
-        .map((val, i) => parseInt(val) * (9 - i))
-        .reduce((a, b) => a + b)
-
-    if (sum > 101) {
-        sum = sum % 101
-    }
-
-    const checkSum = sum == 100 || sum == 101 ? '00' : leftPad('' + sum, 2, '0')
-    return number + checkSum
-}
+// function generateSnils() {
+//     const rnd = Math.floor(Math.random() * 999999999)
+//     const number = leftPad('' + rnd, 9, '0')
+//
+//     let sum = number
+//         .split('')
+//         .map((val, i) => parseInt(val) * (9 - i))
+//         .reduce((a, b) => a + b)
+//
+//     if (sum > 101) {
+//         sum = sum % 101
+//     }
+//
+//     const checkSum = sum === 100 || sum === 101 ? '00' : leftPad('' + sum, 2, '0')
+//     return number + checkSum
+// }
 
 function leftPad(str, len, ch) {
     const length = len - str.length + 1
@@ -58,9 +58,9 @@ function birthSert() {
 
 /* add zeros to string */
 function zeros(str, lng) {
-    var factlength = str.length;
+    const factlength = str.length;
     if (factlength < lng) {
-        for (var i = 0; i < (lng - factlength); i++) {
+        for (let i = 0; i < (lng - factlength); i++) {
             str = '0' + str;
         }
     }
@@ -70,7 +70,7 @@ function zeros(str, lng) {
 /* GENERATE SOME PRORVA OF SOME */
 function genProrva(str) {
     rezult = '';
-    var f_name = str;
+    const f_name = str;
     quant = document.getElementById('quantity').value;
     if (!quant || quant.match(/^[\D]+$/) || quant < 1 || quant > 99) quant = 13;
     for (let i = 0; i < quant; i++) {
@@ -86,17 +86,17 @@ function genProrva(str) {
 
 /* INN FL */
 function innPerson() {
-    var region = zeros(String(Math.floor((Math.random() * 92) + 1)), 2);
-    var inspection = zeros(String(Math.floor((Math.random() * 99) + 1)), 2);
-    var numba = zeros(String(Math.floor((Math.random() * 999999) + 1)), 6);
-    var rezult = region + inspection + numba;
-    var kontr = String(((
+    const region = zeros(String(Math.floor((Math.random() * 92) + 1)), 2);
+    const inspection = zeros(String(Math.floor((Math.random() * 99) + 1)), 2);
+    const numba = zeros(String(Math.floor((Math.random() * 999999) + 1)), 6);
+    let rezult = region + inspection + numba;
+    let kontr = String(((
         7 * rezult[0] + 2 * rezult[1] + 4 * rezult[2] +
         10 * rezult[3] + 3 * rezult[4] + 5 * rezult[5] +
         9 * rezult[6] + 4 * rezult[7] + 6 * rezult[8] +
         8 * rezult[9]
     ) % 11) % 10);
-    kontr == 10 ? kontr = 0 : kontr = kontr;
+    kontr === 10 ? kontr = 0 : kontr = kontr;
     rezult = rezult + kontr;
     kontr = String(((
         3 * rezult[0] + 7 * rezult[1] + 2 * rezult[2] +
@@ -104,46 +104,46 @@ function innPerson() {
         5 * rezult[6] + 9 * rezult[7] + 4 * rezult[8] +
         6 * rezult[9] + 8 * rezult[10]
     ) % 11) % 10);
-    kontr == 10 ? kontr = 0 : kontr = kontr;
+    kontr === 10 ? kontr = 0 : kontr = kontr;
     rezult = rezult + kontr;
     return rezult;
 }
 
 /* INN UL */
 function innOrg() {
-    var region = zeros(String(Math.floor((Math.random() * 92) + 1)), 2);
-    var inspection = zeros(String(Math.floor((Math.random() * 99) + 1)), 2);
-    var numba = zeros(String(Math.floor((Math.random() * 99999) + 1)), 5);
-    var rezult = region + inspection + numba;
-    var kontr = String(((
+    const region = zeros(String(Math.floor((Math.random() * 92) + 1)), 2);
+    const inspection = zeros(String(Math.floor((Math.random() * 99) + 1)), 2);
+    const numba = zeros(String(Math.floor((Math.random() * 99999) + 1)), 5);
+    let rezult = region + inspection + numba;
+    let kontr = String(((
         2 * rezult[0] + 4 * rezult[1] + 10 * rezult[2] +
         3 * rezult[3] + 5 * rezult[4] + 9 * rezult[5] +
         4 * rezult[6] + 6 * rezult[7] + 8 * rezult[8]
     ) % 11) % 10);
-    kontr == 10 ? kontr = 0 : kontr = kontr;
+    kontr === 10 ? kontr = 0 : kontr = kontr;
     rezult = rezult + kontr;
     return rezult;
 }
 
 /* OGRN */
 function ogrn() {
-    var priznak = String(Math.floor((Math.random() * 9) + 1));
-    var godreg = zeros(String(Math.floor((Math.random() * 16) + 1)), 2);
-    var region = zeros(String(Math.floor((Math.random() * 92) + 1)), 2);
-    var inspection = zeros(String(Math.floor((Math.random() * 99) + 1)), 2);
-    var zapis = zeros(String(Math.floor((Math.random() * 99999) + 1)), 5);
-    var rezult = priznak + godreg + region + inspection + zapis;
-    var kontr = String(((rezult) % 11) % 10);
-    kontr == 10 ? kontr = 0 : kontr = kontr;
+    const priznak = String(Math.floor((Math.random() * 9) + 1));
+    const godreg = zeros(String(Math.floor((Math.random() * 16) + 1)), 2);
+    const region = zeros(String(Math.floor((Math.random() * 92) + 1)), 2);
+    const inspection = zeros(String(Math.floor((Math.random() * 99) + 1)), 2);
+    const zapis = zeros(String(Math.floor((Math.random() * 99999) + 1)), 5);
+    let rezult = priznak + godreg + region + inspection + zapis;
+    let kontr = String(((rezult) % 11) % 10);
+    kontr === 10 ? kontr = 0 : kontr = kontr;
     rezult = rezult + kontr;
     return rezult;
 }
 
 /* KPP */
 function kpp() {
-    var region = zeros(String(Math.floor((Math.random() * 92) + 1)), 2);
-    var inspection = zeros(String(Math.floor((Math.random() * 99) + 1)), 2);
-    var prichina = Math.floor((Math.random() * 4) + 1);
+    const region = zeros(String(Math.floor((Math.random() * 92) + 1)), 2);
+    const inspection = zeros(String(Math.floor((Math.random() * 99) + 1)), 2);
+    let prichina = Math.floor((Math.random() * 4) + 1);
     switch (prichina) {
         case 1:
             prichina = '01';
@@ -161,18 +161,17 @@ function kpp() {
             prichina = '01';
             break
     }
-    var numba = zeros(String(Math.floor((Math.random() * 999) + 1)), 3);
-    var rezult = region + inspection + prichina + numba;
-    return rezult;
+    const numba = zeros(String(Math.floor((Math.random() * 999) + 1)), 3);
+    return (region + inspection + prichina + numba);
 }
 
 /* SNILS */
 function snils() {
-    var rand1 = zeros(String(Math.floor((Math.random() * 998) + 2)), 3);
-    var rand2 = zeros(String(Math.floor((Math.random() * 999) + 1)), 3);
-    var rand3 = zeros(String(Math.floor((Math.random() * 999) + 1)), 3);
-    var rezult = rand1 + rand2 + rand3;
-    var kontr = String(9 * rezult[0] + 8 * rezult[1] + 7 * rezult[2] +
+    const rand1 = zeros(String(Math.floor((Math.random() * 998) + 2)), 3);
+    const rand2 = zeros(String(Math.floor((Math.random() * 999) + 1)), 3);
+    const rand3 = zeros(String(Math.floor((Math.random() * 999) + 1)), 3);
+    let rezult = rand1 + rand2 + rand3;
+    let kontr = String(9 * rezult[0] + 8 * rezult[1] + 7 * rezult[2] +
         6 * rezult[3] + 5 * rezult[4] + 4 * rezult[5] +
         3 * rezult[6] + 2 * rezult[7] + 1 * rezult[8]);
     if (kontr < 100) {
@@ -212,7 +211,7 @@ function oid(prefix, segments) {
     const r = prefix ? prefix.split('.') : [];
     while (r.length < segments) r.push(String(Math.trunc(Math.random() * 300 + 1)));
     return r.join(".");
-};
+}
 
 function address(known) {
 
