@@ -16,22 +16,11 @@ const TEMPLATE_FILENAME = "template.xml";
 const CONFIG_FILENAME = "config.json";
 const SRC_DEFAULT = "/home/node/src";
 const DST_DEFAULT ="/home/node/dst";
+const MSG_FIELDS_PREFIX="CDA_GEN_MSG_";
 
 const cmd=argsProcessor() || {};
 if (cmd.h || cmd.help ) {
     console.log("CMA mock generator. Use with parameters:");
-    if (cmd.kafka || cmd.k) {
-        console.log("\t -k(afka) destination_dir");
-        console.log("\t\t path to Kafka broker cluster configuration. Use -h -kafka for details. ");
-        console.log("\t\t It can be passed by $CDA_GEN_KAFKA_CONFIG environment variable");
-        console.log(`\t\t By default Kafka broker not used\n`);
-
-        console.log("Kafka config.json example.\nThere are default values shown");
-        const k = new KafkaWriter();
-        console.log(JSON.stringify(k.config, null, 2));
-        process.exit(0);
-    }
-
 
     console.log("\t -s(rc) template_dir ")
     console.log(`\t\t path to template directory. Files ${CONFIG_FILENAME} & ${TEMPLATE_FILENAME} are required there`);
@@ -43,10 +32,18 @@ if (cmd.h || cmd.help ) {
     console.log("\t\t It can be passed by $CDA_GEN_DST environment variable");
     console.log(`\t\t Default value is '${DST_DEFAULT}'\n`);
 
-    console.log("\t -k(afka) destination_dir");
-    console.log("\t\t path to Kafka broker cluster configuration. Use -h -kafka for details. ");
-    console.log("\t\t It can be passed by $CDA_GEN_KAFKA_CONFIG environment variable");
+    console.log("\t -k(afka) brokers");
+    console.log("\t\t Comma separated broker list, ex. 'kafka1:9092, kafka2:9092'. ");
+    console.log("\t\t It can be passed by $KAFKA_BROKERS environment variable");
     console.log(`\t\t By default Kafka broker not used\n`);
+
+    console.log("\t -t(opic) topic");
+    console.log("\t\t Broker topic for pushing the produced data");
+    console.log("\t\t It can be passed by $KAFKA_TOPIC environment variable\n");
+    console.log(`\t Additional data for produced values of messages CAN been passed through the environment variable prefixed by '${MSG_FIELDS_PREFIX}'`);
+    console.log("\t\t Example:");
+    console.log("\t\t\t CDA_GEN_MSG_sourceType=ABD");
+    console.log("\t\t\t CDA_GEN_MSG_clientId=CDA-generator");
 
     console.log("\t -c(nt) N");
     console.log("\t\t mocks count (default == 1 for files and INFINITY for Kafka destination)");
@@ -75,9 +72,17 @@ try {
 }
 
 let writer;
-if (cmd.k || cmd.kafka || process.env["CDA_GEN_KAFKA_CONFIG"]) {
+if (cmd.k || cmd.kafka || process.env["KAFKA_BROKERS"]) {
     try {
-        const kConfig = fs.readJsonSync(path.resolve(__dirname, (cmd.k || cmd.kafka || process.env["CDA_GEN_KAFKA_CONFIG"])));
+        const kConfig = {
+            brokers: (cmd.k || cmd.kafka || process.env["KAFKA_BROKERS"]).split(",").map(s=>s.trim()),
+            topic: (cmd.t || cmd.topic || process.env["KAFKA_TOPIC"])
+        };
+        kConfig.message = {};
+        for(let k in process.env) {
+            if (k.startsWith(MSG_FIELDS_PREFIX))
+                kConfig.message[k.substring(MSG_FIELDS_PREFIX.length)]=process.env[k]
+        }
         writer = new KafkaWriter(kConfig);
     } catch(e) {
         console.error("Source configuration reading error:\n", e);

@@ -4,15 +4,17 @@ const moment = require("moment/moment");
 
 class KafkaWriter {
     constructor(config) {
-
         this.config = {
             clientId: 'CDA-generator',
             brokers: ['localhost:9092'],
             topic:"CDAinput",
-            sourceId: v4(),
-            sourceType: "MOCKUP SOURCE TYPE",
             ...(config || {})
         };
+        this.messageAddon = {
+            sourceId: v4(),
+            sourceType: "MOCKUP SOURCE TYPE",
+            ...(config.message || {})
+        }
         const kafka = new Kafka({
             clientId: this.config.clientId,
             brokers: this.config.brokers
@@ -26,9 +28,8 @@ class KafkaWriter {
         const guid = v4();
         const fn = guid + '-' + moment().format("YYYY-MM-DD") + ".xml";
         const data = {
+            ...(this.messageAddon),
             'filename': fn,
-            'source_entity': this.config.sourceId,
-            'type_name': this.config.sourceType,
             'code_by_emdr': guid,
             'xml': xmlData
         }
