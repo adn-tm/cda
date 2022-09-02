@@ -120,6 +120,7 @@ async function doIt(template, config, writer, cnt) {
         const s = template(context);
         await writer.write(s);
         i++;
+        console.log(i)
         if (delay) {
             await wait(delay);
         }
