@@ -1,0 +1,8 @@
+{
+  "clientId": "CDA-generator",
+  "brokers": [
+    "localhost:9092"
+  ],
+  "topic": "CDAinput",
+  "sourceType": "MOCKUP SOURCE TYPE"
+}
