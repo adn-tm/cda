@@ -17,7 +17,7 @@ class KafkaWriter {
             clientId: this.config.clientId,
             brokers: this.config.brokers
         })
-        this.producer = kafka.producer({ createPartitioner: Partitioners.LegacyPartitioner })
+        this.producer = kafka.producer({ createPartitioner: Partitioners.DefaultPartitioner })
     }
     async init() {
         await this.producer.connect()
@@ -32,8 +32,9 @@ class KafkaWriter {
             'code_by_emdr': guid,
             'xml': xmlData
         }
+        console.log(fn)
         await this.producer.send({
-            topic: 'test-topic',
+            topic: this.config.topic,
             messages: [
                 {value: JSON.stringify(data)},
             ],

@@ -4,5 +4,6 @@
     "kafka:9092"
   ],
   "topic": "semd.raw",
-  "sourceType": "cda-generator"
+  "sourceId":"cda-generator",
+  "sourceType": "f66u"
 }
