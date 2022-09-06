@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  cda-generator:
+    image: bitnami/node:12
+    volumes:
+      - "./:/app:rw"
+      - "./dist:/mnt/dist:rw"
+    environment:
+      - KAFKA_TOPIC=semd.raw
+      - KAFKA_BROKERS=kafka:9092 # format: "kafka-1:9092, kafka-2:9092"
+      - CDA_GEN_SRC=./templates/66
+      - CDA_GEN_MSG_sourceType=f66u
+      - CDA_GEN_MSG_clientId=cda-generator
+      # - CDA_GEN_DST=/mnt/dist
+      - CDA_GEN_CNT=100
+      - CDA_GEN_DELAY=1000
+    command: "sh -c 'npm install  && node index.js'"
+    # command: "sh"
+    tty: true
