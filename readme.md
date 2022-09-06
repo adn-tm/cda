@@ -1,5 +1,49 @@
-# CDA mock generator 
-### Use with parameters:
+# cda-generator 
+Can be used for generation mockups of structured electronic medical documents (SEMD) based on [standart HL7 CDA](http://www.hl7.org/implement/standards/product_brief.cfm?product_id=496).
+
+### Requirements
+* NodeJS v10+ 
+* npm 
+also possible to run `cda-generator` using `docker`
+
+### Installation
+Clone this repository
+``` bash
+git clone https://github.com/adn-tm/cda.git
+```
+
+### Command line usage
+Install modules
+``` bash
+cd cda
+npm install
+```
+Set up your template (read Templates section)
+`templates`  
+
+Run cda-generator in command-line mode 
+``` bash
+node index.js -s ./templates/66 -d ./dist -c 5
+```
+### Docker usage
+Set up your config in the `docker-compose.yaml`
+
+Run container
+``` bash
+docker-compose up -d
+```
+We provide some examples.
+Generate XML files to local filesystem.
+``` bash
+docker-compose -f docker-compose.fs.yaml up -d 
+```
+Generate XML files and produce messages to Kafka
+``` bash
+docker-compose -f docker-compose.kafka.yaml up -d 
+```
+
+### Command line parameters and environment variable 
+Possible parameters:
 ````
          -h(elp) online help 
          -s(rc) template_dir
@@ -34,3 +78,5 @@
                  It can be passed by $CDA_GEN_DELAY environment variable
                  0 by default
 ````
+### Work with templates
+TBD
