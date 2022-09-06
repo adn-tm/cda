@@ -80,3 +80,5 @@ Possible parameters:
 ````
 ### Work with templates
 TBD
+Supported random data types:
+1. 
