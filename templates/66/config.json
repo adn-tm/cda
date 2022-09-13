@@ -6,12 +6,11 @@
         {},
         "50"
       ]
-    },
+    },    
+    // "patient": {"type": "Person", "params": [{"gender": "f"}, /*isAdult: */ undefined, /* isAlive:*/ undefined]},
     "patient": {
       "type": "Person",
-      "params": [
-        {}
-      ]
+      "params": [{}]
     },
     "effectiveTime": {
       "high": {

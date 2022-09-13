@@ -89,9 +89,9 @@ been described in config.json. JsonPath strings (path through json object like a
 ```json
 {
   "xmlData": {
-    "variable1":{
-      "type": "known type from the list",
-      "params": [ "params are described for each type" ]    
+    "variableName":{ /* can be used in template.xml like: {{variableName.propertyName}} */
+      "type": "known type from the list below",
+      "params": [ "randomization params are described for each type" ]    
      }, 
     ....
   }
@@ -111,7 +111,7 @@ been described in config.json. JsonPath strings (path through json object like a
   Example params: [{"gender":"f"}, isAdult, isAlive]
 
 ```
-gender: enum("f", "m")
+    gender: enum("f", "m")
     genderName: enum("Женский", "Мужской")
     genderCode: enum(1,2)
     firstName: String - random name by russian names popularity (accoring to gender)

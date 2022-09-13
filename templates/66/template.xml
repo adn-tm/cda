@@ -84,11 +84,11 @@
 				<!-- R [1..1] ФИО пациента -->
 				<name>
 					<!-- [1..1] Фамилия -->
-					<family>Страдальская</family>
+					<family>{{patient.lastName}}</family>
 					<!-- [1..1] Имя -->
-					<given>Иннеса</given>
+					<given>{{patient.firstName}}</given>
 					<!-- [0..1] Отчество -->
-					<identity:Patronymic>Сергеевна</identity:Patronymic>
+					<identity:Patronymic>{{patient.secondName}}</identity:Patronymic>
 				</name>
 				<!-- R [1..1] Пол пациента -->
 				<administrativeGenderCode code="{{patient.genderCode}}" codeSystem="1.2.643.5.1.13.13.11.1040" codeSystemName="Пол пациента" displayName="{{patient.genderName}}" codeSystemVersion="2.1"/>
@@ -198,7 +198,7 @@
 					<!-- [1..1] Идентификатор адреса по ФИАС -->
 					<fias:Address>
 						<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
-						<fias:AOGUID>c{{organization.regAddress.FIAS}}</fias:AOGUID>
+						<fias:AOGUID>{{organization.regAddress.FIAS}}</fias:AOGUID>
 						<!-- [1..1] Глобальный уникальный идентификатор дома -->
 						<fias:HOUSEGUID>XXXXXXX-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
 					</fias:Address>
