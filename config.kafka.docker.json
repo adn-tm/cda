@@ -1,9 +1,0 @@
-{
-  "clientId": "cda-generator",
-  "brokers": [
-    "kafka:9092"
-  ],
-  "topic": "semd.raw",
-  "sourceId":"cda-generator",
-  "sourceType": "f66u"
-}
