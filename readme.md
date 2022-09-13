@@ -107,6 +107,9 @@ been described in config.json. JsonPath strings (path through json object like a
 ```
  
 - Person
+  All properties can be customized via params.
+  Example params: [{"gender":"f"}, isAdult, isAlive]
+
 ```
 gender: enum("f", "m")
     genderName: enum("Женский", "Мужской")
@@ -122,10 +125,12 @@ gender: enum("f", "m")
     legalAddress: Address (see below)
     birthDate: Date - date of birth according to genders frequncy distribution
     dul: String - ID of passport (older that 14) or number of certificate of the birth (for children)
-    deathDate: Date
+    deathDate: Date - depends on isAlive param
 ```
 
 - Organization
+All properties can be customized via params.
+Example: params: [{"inn":"771232345345"}]
 ```
     id.oid: String - OID prefixed random value
     id.codeLnumber - random ID number
