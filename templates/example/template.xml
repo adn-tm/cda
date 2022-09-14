@@ -1,0 +1,192 @@
+<html version="1.0" encoding="UTF-8">
+<body>
+	<h1> Person </h1>
+		<div> gender: {{human.gender}} </div>
+		<div> genderName: {{human.genderName}} </div>
+		<div> genderCode: {{human.genderCode}} </div>
+		<div> firstName: {{human.firstName}} </div>
+		<div> lastName: {{human.lastName}} </div>
+		<div> secondName: {{human.secondName}} </div>
+		<div> snils: {{human.snils}} </div>
+		<div> oms: {{human.oms}} </div>
+		<div> inn: {{human.inn}} </div>
+		<div> guid: {{human.guid}} </div>
+		<div> birthDate: {{human.birthDate}} </div>
+		<div> dul: {{human.dul}} </div>
+		<div> human.address:
+			<div> postCode: {{human.address.postCode}} </div>
+			<div> regType: {{human.address.regType}} </div>
+			<div> region: {{human.address.region}} </div>
+			<div> districtType: {{human.address.districtType}} </div>
+			<div> district: {{human.address.district}} </div>
+			<div> cityType: {{human.address.cityType}} </div>
+			<div> city: {{human.address.city}} </div>
+			<div> typePlace: {{human.address.typePlace}} </div>
+			<div> place: {{human.address.place}} </div>
+			<div> CLADR: {{human.address.CLADR}} </div>
+			<div> FIAS: {{human.address.FIAS}} </div>
+			<div> levelFIAS: {{human.address.levelFIAS}} </div>
+			<div> isAdminCenter: {{human.address.isAdminCenter}} </div>
+			<div> OKATO: {{human.address.OKATO}} </div>
+			<div> OKTMO: {{human.address.OKTMO}} </div>
+			<div> codeTaxOffice: {{human.address.codeTaxOffice}} </div>
+			<div> timezone: {{human.address.timezone}} </div>
+			<div> latitude: {{human.address.latitude}} </div>
+			<div> longitude: {{human.address.longitude}} </div>
+			<div> federalDistrict: {{human.address.federalDistrict}} </div>
+			<div> population: {{human.address.population}} </div>
+			<div> regionCode: {{human.address.regionCode}} </div>
+			<div> street: {{human.address.street}} </div>
+			<div> building: {{human.address.building}} </div>
+			<div> flat: {{human.address.flat}} </div>
+			<div> office: {{human.address.office}} </div>
+		</div>
+			<div> human:legalAddress:
+				<div> postCode: {{human.legalAddress.postCode}} </div>
+				<div> regType: {{human.legalAddress.regType}} </div>
+				<div> region: {{human.legalAddress.region}} </div>
+				<div> districtType: {{human.legalAddress.districtType}} </div>
+				<div> district: {{human.legalAddress.district}} </div>
+				<div> cityType: {{human.legalAddress.cityType}} </div>
+				<div> city: {{human.legalAddress.city}} </div>
+				<div> typePlace: {{human.legalAddress.typePlace}} </div>
+				<div> place: {{human.legalAddress.place}} </div>
+				<div> CLADR: {{human.legalAddress.CLADR}} </div>
+				<div> FIAS: {{human.legalAddress.FIAS}} </div>
+				<div> levelFIAS: {{human.legalAddress.levelFIAS}} </div>
+				<div> isAdminCenter: {{human.legalAddress.isAdminCenter}} </div>
+				<div> OKATO: {{human.legalAddress.OKATO}} </div>
+				<div> OKTMO: {{human.legalAddress.OKTMO}} </div>
+				<div> codeTaxOffice: {{human.legalAddress.codeTaxOffice}} </div>
+				<div> timezone: {{human.legalAddress.timezone}} </div>
+				<div> latitude: {{human.legalAddress.latitude}} </div>
+				<div> longitude: {{human.legalAddress.longitude}} </div>
+				<div> federalDistrict: {{human.legalAddress.federalDistrict}} </div>
+				<div> population: {{human.legalAddress.population}} </div>
+				<div> regionCode: {{human.legalAddress.regionCode}} </div>
+				<div> street: {{human.legalAddress.street}} </div>
+				<div> building: {{human.legalAddress.building}} </div>
+				<div> flat: {{human.legalAddress.flat}} </div>
+				<div> office: {{human.legalAddress.office}} </div>
+			</div>
+	<hr/>
+	<h1> Organization </h1>
+	<div> org.id:
+		<div>oid: {{org.id.oid}}</div>
+		<div>code: {{org.id.code}}</div>
+	</div>
+	<div> guid: {{org.guid}}</div>
+	<div> inn: {{org.inn}}</div>
+	<div> ogrn: {{org.ogrn}}</div>
+	<div> kpp: {{org.kpp}}</div>
+	<div> shortName: {{org.shorName}}</div>
+	<div> fullName: {{org.fullName}}</div>
+	<div> org.regAddress:
+		<div> postCode: {{org.regAddress.postCode}} </div>
+		<div> regType: {{org.regAddress.regType}} </div>
+		<div> region: {{org.regAddress.region}} </div>
+		<div> districtType: {{org.regAddress.districtType}} </div>
+		<div> district: {{org.regAddress.district}} </div>
+		<div> cityType: {{org.regAddress.cityType}} </div>
+		<div> city: {{org.regAddress.city}} </div>
+		<div> typePlace: {{org.regAddress.typePlace}} </div>
+		<div> place: {{org.regAddress.place}} </div>
+		<div> CLADR: {{org.regAddress.CLADR}} </div>
+		<div> FIAS: {{org.regAddress.FIAS}} </div>
+		<div> levelFIAS: {{org.regAddress.levelFIAS}} </div>
+		<div> isAdminCenter: {{org.regAddress.isAdminCenter}} </div>
+		<div> OKATO: {{org.regAddress.OKATO}} </div>
+		<div> OKTMO: {{org.regAddress.OKTMO}} </div>
+		<div> codeTaxOffice: {{org.regAddress.codeTaxOffice}} </div>
+		<div> timezone: {{org.regAddress.timezone}} </div>
+		<div> latitude: {{org.regAddress.latitude}} </div>
+		<div> longitude: {{org.regAddress.longitude}} </div>
+		<div> federalDistrict: {{org.regAddress.federalDistrict}} </div>
+		<div> population: {{org.regAddress.population}} </div>
+		<div> regionCode: {{org.regAddress.regionCode}} </div>
+		<div> street: {{org.regAddress.street}} </div>
+		<div> building: {{org.regAddress.building}} </div>
+		<div> flat: {{org.regAddress.flat}} </div>
+		<div> office: {{org.regAddress.office}} </div>
+	</div>
+
+	<div> org.postAddress:
+		<div> postCode: {{org.postAddress.postCode}} </div>
+		<div> regType: {{org.postAddress.regType}} </div>
+		<div> region: {{org.postAddress.region}} </div>
+		<div> districtType: {{org.postAddress.districtType}} </div>
+		<div> district: {{org.postAddress.district}} </div>
+		<div> cityType: {{org.postAddress.cityType}} </div>
+		<div> city: {{org.postAddress.city}} </div>
+		<div> typePlace: {{org.postAddress.typePlace}} </div>
+		<div> place: {{org.postAddress.place}} </div>
+		<div> CLADR: {{org.postAddress.CLADR}} </div>
+		<div> FIAS: {{org.postAddress.FIAS}} </div>
+		<div> levelFIAS: {{org.postAddress.levelFIAS}} </div>
+		<div> isAdminCenter: {{org.postAddress.isAdminCenter}} </div>
+		<div> OKATO: {{org.postAddress.OKATO}} </div>
+		<div> OKTMO: {{org.postAddress.OKTMO}} </div>
+		<div> codeTaxOffice: {{org.postAddress.codeTaxOffice}} </div>
+		<div> timezone: {{org.postAddress.timezone}} </div>
+		<div> latitude: {{org.postAddress.latitude}} </div>
+		<div> longitude: {{org.postAddress.longitude}} </div>
+		<div> federalDistrict: {{org.postAddress.federalDistrict}} </div>
+		<div> population: {{org.postAddress.population}} </div>
+		<div> regionCode: {{org.postAddress.regionCode}} </div>
+		<div> street: {{org.postAddress.street}} </div>
+		<div> building: {{org.postAddress.building}} </div>
+		<div> flat: {{org.postAddress.flat}} </div>
+		<div> office: {{org.postAddress.office}} </div>
+	</div>
+	<div>
+		<h1>Address (spec. region)</h1>
+		moscowRegAddress:
+			<div> postCode: {{moscowRegAddress.postCode}} </div>
+			<div> regType: {{moscowRegAddress.regType}} </div>
+			<div> region: {{moscowRegAddress.region}} </div>
+			<div> districtType: {{moscowRegAddress.districtType}} </div>
+			<div> district: {{moscowRegAddress.district}} </div>
+			<div> cityType: {{moscowRegAddress.cityType}} </div>
+			<div> city: {{moscowRegAddress.city}} </div>
+			<div> typePlace: {{moscowRegAddress.typePlace}} </div>
+			<div> place: {{moscowRegAddress.place}} </div>
+			<div> CLADR: {{moscowRegAddress.CLADR}} </div>
+			<div> FIAS: {{moscowRegAddress.FIAS}} </div>
+			<div> levelFIAS: {{moscowRegAddress.levelFIAS}} </div>
+			<div> isAdminCenter: {{moscowRegAddress.isAdminCenter}} </div>
+			<div> OKATO: {{moscowRegAddress.OKATO}} </div>
+			<div> OKTMO: {{moscowRegAddress.OKTMO}} </div>
+			<div> codeTaxOffice: {{moscowRegAddress.codeTaxOffice}} </div>
+			<div> timezone: {{moscowRegAddress.timezone}} </div>
+			<div> latitude: {{moscowRegAddress.latitude}} </div>
+			<div> longitude: {{moscowRegAddress.longitude}} </div>
+			<div> federalDistrict: {{moscowRegAddress.federalDistrict}} </div>
+			<div> population: {{moscowRegAddress.population}} </div>
+			<div> regionCode: {{moscowRegAddress.regionCode}} </div>
+			<div> street: {{moscowRegAddress.street}} </div>
+			<div> building: {{moscowRegAddress.building}} </div>
+			<div> flat: {{moscowRegAddress.flat}} </div>
+			<div> office: {{moscowRegAddress.office}} </div>
+	</div>
+
+	<h1>Other types</h1>
+	<div>  from0to100: {{from0to100}}</div>
+	<div>  fromList: {{fromList}}</div>
+	<div>  fromAlphabet: {{fromAlphabet}}</div>
+	<div>  dateInRange: {{dateInRange}}</div>
+	<div>  somePassport: {{somePassport}}</div>
+	<div>  someOGRN: {{someOGRN}}</div>
+	<div>  someKPP: {{someKPP}}</div>
+	<div>  someSNILS: {{someSNILS}}</div>
+	<div>  someOID_10groups: {{someOID_10groups}}</div>
+	<div>  someOMS: {{someOMS}}</div>
+	<div>  someBirthSert: {{someBirthSert}}</div>
+	<div>  someINN: {{someINN}}</div>
+	<div>  someBuisnessINN: {{someBuisnessINN}}</div>
+	<div>  dsc
+		<div>  key {{dsc.key}}</div>
+		<div>  value {{dsc.value}}</div>
+	</div>
+
+</body>
+</html>

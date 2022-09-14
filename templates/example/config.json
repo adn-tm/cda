@@ -1,17 +1,22 @@
 {
   "xmlData": {
-    "organization": {
-      "type": "Organization",
-      "params": [
-        {},
-        "50"
-      ]
+    "org": { "type": "Organization" },
+    "human": {
+      "type": "Person"
     },
-    "patient": {
-      "type": "Person",
-      "params": [{}]
+    "from0to100": {
+      "type": "random",
+      "params": [0, 100]
     },
-    "effectiveTime": {
+    "fromList": {
+      "type": "random",
+      "params": [["a", "b", "c"]]
+    },
+    "fromAlphabet": {
+      "type": "random",
+      "params": ["0123456789ABCDEF", 16]
+    },
+    "dateInRange": {
       "high": {
         "type": "Date",
         "params": [
@@ -19,6 +24,38 @@
           "NOW"
         ]
       }
+    },
+    "moscowRegAddress": {
+      "type": "Address",
+      "params": ["50"]
+    },
+    "somePassport": {
+      "type": "Passport"
+    },
+    "someOGRN": {
+      "type": "OGRN"
+    },
+    "someKPP": {
+      "type": "KPP"
+    },
+    "someSNILS": {
+      "type": "SNILS"
+    },
+    "someOID_10groups": {
+      "type": "OID",
+      "params": ["1.2.3.4.5.6.7.8", 10]
+    },
+    "someOMS": {
+      "type": "OMS"
+    },
+    "someBirthSert": {
+      "type": "BirthSert"
+    },
+    "someINN": {
+      "type": "INN_Person"
+    },
+    "someBuisnessINN": {
+      "type": "INN_Org"
     },
     "dsc": {
       "type": "random",

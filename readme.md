@@ -23,7 +23,7 @@ Set up your template (read Templates section)
 
 Run cda-generator in command-line mode 
 ``` bash
-node index.js -s ./templates/66 -d ./dist -c 5
+node index.js -s ./templates/example -d ./results -c 3
 ```
 ### Docker usage
 Set up your config in the `docker-compose.yaml`

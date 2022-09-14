@@ -121,7 +121,8 @@ async function doIt(template, config, writer, cnt) {
     let i = 0;
     while(!_.isFinite(cnt) || i < cnt) {
         const context = Factory(config.xmlData || config);
-        // console.log("Person", context.patient);
+        console.log("keys", Object.keys(context));
+        console.log("Org", context.org);
         const s = template(context);
         await writer.write(s);
         i++;

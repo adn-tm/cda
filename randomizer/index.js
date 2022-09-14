@@ -82,7 +82,7 @@ function rand(cnt, finish) {
 
 function genOnePerson(known, isAdult, isAlive) {
     const person = {...(known || {})};
-    person.gender = person.gender || {gender: GENDERS[rand(2)]};
+    person.gender = GENDERS.indexOf(person.gender)>=0 ? person.gender : GENDERS[rand(2)];
     person.genderName = person.gender === 'f' ? "Женский" : "Мужской";
     person.genderCode = person.gender === 'f' ? 2 : 1;
     person.firstName = person.firstName || rand(NAMES[person.gender]);
