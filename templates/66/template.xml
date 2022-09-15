@@ -43,7 +43,7 @@
 				<!-- R [1..1] Номер документа -->
 				<identity:Number>{{patient.dul}}</identity:Number>
 				<!-- [1..1] Сведения о том, кем выдан документ -->
-				<identity:IssueOrgName>Отделом УФМС России по {{issueOrg.region}} в {{issueOrg.district}} {{issueOrg.districtType}} в {{issueOrg.cityType}} {{issueOrg.city}}</identity:IssueOrgName>
+				<identity:IssueOrgName>Отделом УФМС России по {{issueOrg.regType}} {{issueOrg.region}} в {{issueOrg.districtType}} {{issueOrg.district}} в {{issueOrg.cityType}} {{issueOrg.city}}</identity:IssueOrgName>
 				<!-- [1..1] Сведения о том, кем выдан документ (код подразделения) -->
 				<identity:IssueOrgCode>660-003</identity:IssueOrgCode>
 				<!-- R [1..1] Дата выдачи документа -->
