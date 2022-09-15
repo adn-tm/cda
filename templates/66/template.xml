@@ -31,19 +31,19 @@
 		<!-- R [1..1] -->
 		<patientRole>
 			<!-- R [1..1] Уникальный идентификатор пациента в МИС -->
-			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.10" extension="09"/>
+			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.10" extension="{{patient.guid}}"/>
 			<!-- [1..1] СНИЛС пациента -->
-			<id root="1.2.643.100.3" extension="12345678909"/>
+			<id root="1.2.643.100.3" extension="{{patient.snils}}"/>
 			<!-- [1..1] Сведения о документе, удостоверяющем личность пациента -->
 			<identity:IdentityDoc>
 				<!-- R [1..1] Тип документа -->
 				<identity:IdentityCardType code="1" codeSystem="1.2.643.5.1.13.13.99.2.48" codeSystemName="Документы, удостоверяющие личность" displayName="Паспорт гражданина Российской Федерации" codeSystemVersion="6.2"/>
 				<!-- [1..1] Серия документа -->
-				<identity:Series>6512</identity:Series>
+				<identity:Series>{{patient.dul}}</identity:Series>
 				<!-- R [1..1] Номер документа -->
-				<identity:Number>456239</identity:Number>
+				<identity:Number>{{patient.dul}}</identity:Number>
 				<!-- [1..1] Сведения о том, кем выдан документ -->
-				<identity:IssueOrgName>Отделом УФМС России по Свердловской области в Железнодорожном р-не гор. Екатеринбург</identity:IssueOrgName>
+				<identity:IssueOrgName>Отделом УФМС России по {{issueOrg.region}} в {{issueOrg.district}} {{issueOrg.districtType}} в {{issueOrg.cityType}} {{issueOrg.city}}</identity:IssueOrgName>
 				<!-- [1..1] Сведения о том, кем выдан документ (код подразделения) -->
 				<identity:IssueOrgCode>660-003</identity:IssueOrgCode>
 				<!-- R [1..1] Дата выдачи документа -->
@@ -55,24 +55,24 @@
 				<identity:InsurancePolicyType code="2" codeSystem="1.2.643.5.1.13.13.11.1035" codeSystemName="Виды полиса обязательного медицинского страхования" displayName="Полис ОМС единого образца, бессрочный" codeSystemVersion="1.3"/>
 				<!-- [0..1] Серия полиса ОМС -->
 				<!-- R [1..1] Номер полиса ОМС -->
-				<identity:Number>665113088600</identity:Number>
+				<identity:Number>{{patient.oms}}</identity:Number>
 			</identity:InsurancePolicy>
 			<!-- [1..2] Адрес пациента -->
 			<addr>
 				<!-- R [1..1] Тип адреса -->
 				<address:Type code="1" codeSystem="1.2.643.5.1.13.13.11.1504" codeSystemName="Тип адреса пациента" displayName="Адрес по месту жительства (постоянной регистрации)" codeSystemVersion="1.3"/>
 				<!-- R [1..1] Адрес (текстом) -->
-				<streetAddressLine>город Екатеринбург, улица Советская, дом 44, квартира 115</streetAddressLine>
+				<streetAddressLine> {{patient.address.regType}} {{patient.address.region}}, {{patient.address.districtType}} {{patient.address.district}}, {{patient.address.cityType}} {{patient.address.city}}, {{patient.address.typePlace}} {{patient.address.place}}, {{patient.address.street}}, дом {{patient.address.building}},квартира {{patient.address.flat}} </streetAddressLine>
 				<!-- R [1..1] Код субъекта РФ -->
-				<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+				<address:stateCode code="{{patient.address.regionCode}}" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{patient.address.region}} {{patient.address.regType}}" codeSystemVersion="6.3"/>
 				<!-- [1..1] Вид места жительства -->
-				<address:residentCode code="1" codeSystem="1.2.643.5.1.13.13.11.1042" codeSystemName="Вид места жительства" displayName="Город" codeSystemVersion="3.2"/>
+				<address:residentCode code="1" codeSystem="1.2.643.5.1.13.13.11.1042" codeSystemName="Вид места жительства" displayName="{{patient.address.cityType}}" codeSystemVersion="3.2"/>
 				<!-- [1..1] Почтовый индекс -->
-				<postalCode>620137</postalCode>
+				<postalCode>{{patient.address.postCode}}</postalCode>
 				<!-- [1..1] Идентификатор адреса по ФИАС -->
 				<fias:Address>
 					<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
-					<fias:AOGUID>683dcdd7-209b-4119-aa5a-05b9485c2fc5</fias:AOGUID>
+					<fias:AOGUID>{{patient.address.FIAS}}</fias:AOGUID>
 					<!-- [1..1] Глобальный уникальный идентификатор дома -->
 					<fias:HOUSEGUID>067a2241-bda6-43c2-abad-ebc52c1db03b</fias:HOUSEGUID>
 				</fias:Address>
@@ -103,9 +103,9 @@
 						<!-- R [1..1] Тип документа -->
 						<identity:IdentityCardType code="1" codeSystem="1.2.643.5.1.13.13.99.2.48" codeSystemName="Документы, удостоверяющие личность" displayName="Паспорт гражданина Российской Федерации" codeSystemVersion="6.2"/>
 						<!-- [1..1] Серия документа -->
-						<identity:Series>6512</identity:Series>
+						<identity:Series>{{guardian.dul}}</identity:Series>
 						<!-- R [1..1] Номер документа -->
-						<identity:Number>456247</identity:Number>
+						<identity:Number>{{guardian.dul}}</identity:Number>
 						<!-- [1..1] Сведения о том, кем выдан документ -->
 						<identity:IssueOrgName>Отделом УФМС России по Свердловской области в Железнодорожном р-не гор. Екатеринбург</identity:IssueOrgName>
 						<!-- [1..1] Сведения о том, кем выдан документ (код подразделения) -->
@@ -131,15 +131,15 @@
 					<!-- [0..1] Адрес фактического места жительства представителя -->
 					<addr>
 						<!-- R [1..1] Адрес (текстом) -->
-						<streetAddressLine>г Екатеринбург, ул Советская, д 44, кв 116</streetAddressLine>
+						<streetAddressLine> {{guardian.address.region}} {{guardian.address.regType}}, {{guardian.address.districtType}} {{guardian.address.district}}, {{guardian.address.cityType}} {{guardian.address.city}}, {{guardian.address.typePlace}} {{guardian.address.place}}, {{guardian.address.street}}, дом {{guardian.address.building}},квартира {{guardian.address.flat}} </streetAddressLine>
 						<!-- R [1..1] Код субъекта РФ -->
-						<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+						<address:stateCode code="{{guardian.address.regionCode}}" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{guardian.address.region}} {{guardian.address.regType}}" codeSystemVersion="6.3"/>
 						<!-- [1..1] Почтовый индекс -->
-						<postalCode>620137</postalCode>
+						<postalCode>{{guardian.address.postCode}}</postalCode>
 						<!-- [1..1] Идентификатор адреса по ФИАС -->
 						<fias:Address>
 							<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
-							<fias:AOGUID>683dcdd7-209b-4119-aa5a-05b9485c2fc5</fias:AOGUID>
+							<fias:AOGUID>{{guardian.address.FIAS}}</fias:AOGUID>
 							<!-- [1..1] Глобальный уникальный идентификатор дома -->
 							<fias:HOUSEGUID>067a2241-bda6-43c2-abad-ebc52c1db03b</fias:HOUSEGUID>
 						</fias:Address>
@@ -151,11 +151,11 @@
 						<!-- R [1..1] ФИО законного представителя -->
 						<name>
 							<!-- R [1..1] Фамилия -->
-							<family>Страдальский</family>
+							<family>{{guardian.lastName}}</family>
 							<!-- R [1..1] Имя -->
-							<given>Игнат</given>
+							<given>{{guardian.firstName}}</given>
 							<!-- [0..1] Отчество -->
-							<identity:Patronymic>Сергеевич</identity:Patronymic>
+							<identity:Patronymic>{{guardian.secondName}}</identity:Patronymic>
 						</name>
 					</guardianPerson>
 					<!-- [0..1] Сведения о законном представителе (юридическом лице) -->
@@ -213,23 +213,23 @@
 		<!-- R [1..1] -->
 		<assignedAuthor>
 			<!-- R [1..1] Уникальный идентификатор автора в МИС -->
-			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.70" extension="7000"/>
+			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.70" extension="{{author.guid}}"/>
 			<!-- R [1..1] СНИЛС автора -->
-			<id root="1.2.643.100.3" extension="12345678970"/>
+			<id root="1.2.643.100.3" extension="{{author.SNILS}}"/>
 			<!-- R [1..1] Код должности автора -->
 			<code code="109" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="Должности медицинских и фармацевтических работников" displayName="врач-терапевт" codeSystemVersion="7.6"/>
 			<!-- [0..1] Адрес места работы автора документа -->
 			<addr>
 				<!-- R [1..1] Адрес (текстом) -->
-				<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+				<streetAddressLine>{{organization.regAddress.cityType}}. {{organization.regAddress.city}}, {{organization.regAddress.street}}, {{organization.regAddress.building}}</streetAddressLine>
 				<!-- R [1..1] Код субъекта РФ -->
-				<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+				<address:stateCode code="{{organization.regAddress.regionCode}}" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{organization.regAddress.region}} {{organization.regAddress.regionType}}" codeSystemVersion="6.3"/>
 				<!-- [1..1] Почтовый индекс -->
-				<postalCode>620026</postalCode>
+				<postalCode>{{organization.regAddress.postCode}}</postalCode>
 				<!-- [1..1] Идентификатор адреса по ФИАС -->
 				<fias:Address>
 					<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
-					<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+					<fias:AOGUID>{{organization.regAddress.FIAS}}</fias:AOGUID>
 					<!-- [1..1] Глобальный уникальный идентификатор дома -->
 					<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
 				</fias:Address>
@@ -241,11 +241,11 @@
 				<!-- R [1..1] ФИО автора -->
 				<name>
 					<!-- R [1..1] Фамилия -->
-					<family>Крупская</family>
+					<family>{{author.lastName}}</family>
 					<!-- R [1..1] Имя -->
-					<given>Надежда</given>
+					<given>{{author.firstName}}</given>
 					<!-- [0..1] Отчество -->
-					<identity:Patronymic>Константиновна</identity:Patronymic>
+					<identity:Patronymic>{{author.secondName}}</identity:Patronymic>
 				</name>
 			</assignedPerson>
 			<!-- [0..1] Сведения о медицинской организации, где работает автор -->
@@ -259,15 +259,15 @@
 				<!-- [0..1] Адрес медицинской организации или ИП -->
 				<addr>
 					<!-- R [1..1] Адрес (текстом) -->
-					<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+					<streetAddressLine>{{organization.regAddress.cityType}}. {{organization.regAddress.city}}, {{organization.regAddress.street}}, {{organization.regAddress.building}}</streetAddressLine>
 					<!-- R [1..1] Код субъекта РФ -->
-					<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+					<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{organization.regAddress.region}} {{organization.regAddress.regionType}}" codeSystemVersion="6.3"/>
 					<!-- [1..1] Почтовый индекс -->
-					<postalCode>620026</postalCode>
+					<postalCode>{{organization.regAddress.postCode}}</postalCode>
 					<!-- [1..1] Идентификатор адреса по ФИАС -->
 					<fias:Address>
 						<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
-						<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+						<fias:AOGUID>{{organization.regAddress.FIAS}}</fias:AOGUID>
 						<!-- [1..1] Глобальный уникальный идентификатор дома -->
 						<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
 					</fias:Address>

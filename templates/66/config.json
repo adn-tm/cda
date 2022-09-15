@@ -11,6 +11,18 @@
       "type": "Person",
       "params": [{}]
     },
+    "guardian": {
+      "type": "Person",
+      "params": [{}]
+    },
+    "author":{
+      "type": "Person",
+      "params": [{}]
+    },
+    "issueOrg":{
+      "type": "Address",
+      "params": [{}]
+    },
     "effectiveTime": {
       "high": {
         "type": "Date",
