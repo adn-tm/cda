@@ -1,0 +1,2073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="066u.xsl"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:identity="urn:hl7-ru:identity" xmlns:address="urn:hl7-ru:address" xmlns:medService="urn:hl7-ru:medService" xmlns:fias="urn:hl7-ru:fias">
+	<!-- R [1..] Требуемый элемент. Элемент обязан иметь непустое наполнение, nullFlavor не разрешён -->
+	<!-- [1..] Обязательный элемент. Элемент обязан присутствовать, но может иметь пустое наполнение с указанием причины отсутствия информации через nullFlavor -->
+	<!-- [0..] Не обязательный элемент. Элемент может отсутствовать -->
+	<!-- R [1..1] Указание на область применения документа (РФ) -->
+	<realmCode code="RU"/>
+	<!-- R [1..1] Указание на тип структуры документа (CDA R2) -->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+	<!-- R [1..1] Уникальный идентификатор руководства по реализации СЭМД -->
+	<templateId root="1.2.643.5.1.13.13.14.113.9.1"/>
+	<!-- R [1..1] Уникальный идентификатор документа -->
+	<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.51"  extension="{{rand 1000000}}"/>
+	<!-- R [1..1] Вид медицинского документа -->
+	<code code="113" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemName="Виды медицинской документации" displayName="Статистическая карта выбывшего из стационара" codeSystemVersion="5.6"/>
+	<!-- R [1..1] Заголовок документа -->
+	<title>СТАТИСТИЧЕСКАЯ КАРТА ВЫБЫВШЕГО ИЗ СТАЦИОНАРА</title>
+	<!-- R [1..1] Дата создания документа -->
+	<effectiveTime value="20220531125030+0500"/>
+	<!-- R [1..1] Уровень конфиденциальности документа -->
+	<confidentialityCode code="N" codeSystem="1.2.643.5.1.13.13.99.2.285" codeSystemName="Уровень конфиденциальности медицинского документа" displayName="Обычный" codeSystemVersion="1.2"/>
+	<!-- R [1..1] Указание на язык документа -->
+	<languageCode code="ru-RU"/>
+	<!-- R [1..1] Уникальный идентификатор набора версий документа -->
+	<setId root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.50"  extension="{{rand 1000}}"/>
+	<!-- R [1..1] Номер версии документа -->
+	<versionNumber value="1"/>
+	<!-- R [1..1] Сведения о пациенте -->
+	<recordTarget>
+		<!-- R [1..1] -->
+		<patientRole>
+			<!-- R [1..1] Уникальный идентификатор пациента в МИС -->
+			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.10" extension="{{patient.guid}}"/>
+			<!-- [1..1] СНИЛС пациента -->
+			<id root="1.2.643.100.3" extension="{{patient.snils}}"/>
+			<!-- [1..1] Сведения о документе, удостоверяющем личность пациента -->
+			<identity:IdentityDoc>
+				<!-- R [1..1] Тип документа -->
+				<identity:IdentityCardType code="1" codeSystem="1.2.643.5.1.13.13.99.2.48" codeSystemName="Документы, удостоверяющие личность" displayName="Паспорт гражданина Российской Федерации" codeSystemVersion="6.2"/>
+				<!-- [1..1] Серия документа -->
+				<identity:Series>{{patient.dul}}</identity:Series>
+				<!-- R [1..1] Номер документа -->
+				<identity:Number>{{patient.dul}}</identity:Number>
+				<!-- [1..1] Сведения о том, кем выдан документ -->
+				<identity:IssueOrgName>Отделом УФМС России по {{issueOrg.regType}} {{issueOrg.region}} в {{issueOrg.districtType}} {{issueOrg.district}} в {{issueOrg.cityType}} {{issueOrg.city}}</identity:IssueOrgName>
+				<!-- [1..1] Сведения о том, кем выдан документ (код подразделения) -->
+				<identity:IssueOrgCode>660-003</identity:IssueOrgCode>
+				<!-- R [1..1] Дата выдачи документа -->
+				<identity:IssueDate value="20121113"/>
+			</identity:IdentityDoc>
+			<!-- [1..1] Сведения о полисе ОМС пациента -->
+			<identity:InsurancePolicy>
+				<!-- R [1..1] Тип полиса ОМС -->
+				<identity:InsurancePolicyType code="2" codeSystem="1.2.643.5.1.13.13.11.1035" codeSystemName="Виды полиса обязательного медицинского страхования" displayName="Полис ОМС единого образца, бессрочный" codeSystemVersion="1.3"/>
+				<!-- [0..1] Серия полиса ОМС -->
+				<!-- R [1..1] Номер полиса ОМС -->
+				<identity:Number>{{patient.oms}}</identity:Number>
+			</identity:InsurancePolicy>
+			<!-- [1..2] Адрес пациента -->
+			<addr>
+				<!-- R [1..1] Тип адреса -->
+				<address:Type code="1" codeSystem="1.2.643.5.1.13.13.11.1504" codeSystemName="Тип адреса пациента" displayName="Адрес по месту жительства (постоянной регистрации)" codeSystemVersion="1.3"/>
+				<!-- R [1..1] Адрес (текстом) -->
+				<streetAddressLine> {{patient.address.regType}} {{patient.address.region}}, {{patient.address.districtType}} {{patient.address.district}}, {{patient.address.cityType}} {{patient.address.city}}, {{patient.address.typePlace}} {{patient.address.place}}, {{patient.address.street}}, дом {{patient.address.building}},квартира {{patient.address.flat}} </streetAddressLine>
+				<!-- R [1..1] Код субъекта РФ -->
+				<address:stateCode code="{{patient.address.regionCode}}" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{patient.address.region}} {{patient.address.regType}}" codeSystemVersion="6.3"/>
+				<!-- [1..1] Вид места жительства -->
+				<address:residentCode code="1" codeSystem="1.2.643.5.1.13.13.11.1042" codeSystemName="Вид места жительства" displayName="{{patient.address.cityType}}" codeSystemVersion="3.2"/>
+				<!-- [1..1] Почтовый индекс -->
+				<postalCode>{{patient.address.postCode}}</postalCode>
+				<!-- [1..1] Идентификатор адреса по ФИАС -->
+				<fias:Address>
+					<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+					<fias:AOGUID>{{patient.address.FIAS}}</fias:AOGUID>
+					<!-- [1..1] Глобальный уникальный идентификатор дома -->
+					<fias:HOUSEGUID>067a2241-bda6-43c2-abad-ebc52c1db03b</fias:HOUSEGUID>
+				</fias:Address>
+			</addr>
+			<!-- [0..*] Контакты пациента -->
+			<telecom use="MC" value="tel:+79001491234"/>
+			<!-- R [1..1] -->
+			<patient>
+				<!-- R [1..1] ФИО пациента -->
+				<name>
+					<!-- [1..1] Фамилия -->
+					<family>{{patient.lastName}}</family>
+					<!-- [1..1] Имя -->
+					<given>{{patient.firstName}}</given>
+					<!-- [0..1] Отчество -->
+					<identity:Patronymic>{{patient.secondName}}</identity:Patronymic>
+				</name>
+				<!-- R [1..1] Пол пациента -->
+				<administrativeGenderCode code="{{patient.genderCode}}" codeSystem="1.2.643.5.1.13.13.11.1040" codeSystemName="Пол пациента" displayName="{{patient.genderName}}" codeSystemVersion="2.1"/>
+				<!-- [1..1] Дата рождения пациента -->
+				<birthTime value="{{dateFormat patient.birthDate 'YYYYMMDD'}}"/>
+				<!-- [0..1] Сведения о законном (уполномоченном) представителе гражданина -->
+				<guardian classCode="GUARD">
+					<!-- [0..1] СНИЛС представителя -->
+					<id root="1.2.643.100.3" extension="12345678911"/>
+					<!-- [0..1] Сведения о документе, удостоверяющем личность представителя -->
+					<identity:IdentityDoc>
+						<!-- R [1..1] Тип документа -->
+						<identity:IdentityCardType code="1" codeSystem="1.2.643.5.1.13.13.99.2.48" codeSystemName="Документы, удостоверяющие личность" displayName="Паспорт гражданина Российской Федерации" codeSystemVersion="6.2"/>
+						<!-- [1..1] Серия документа -->
+						<identity:Series>{{guardian.dul}}</identity:Series>
+						<!-- R [1..1] Номер документа -->
+						<identity:Number>{{guardian.dul}}</identity:Number>
+						<!-- [1..1] Сведения о том, кем выдан документ -->
+						<identity:IssueOrgName>Отделом УФМС России по Свердловской области в Железнодорожном р-не гор. Екатеринбург</identity:IssueOrgName>
+						<!-- [1..1] Сведения о том, кем выдан документ (код подразделения) -->
+						<identity:IssueOrgCode>660-003</identity:IssueOrgCode>
+						<!-- R [1..1] Дата выдачи документа -->
+						<identity:IssueDate value="20211118"/>
+					</identity:IdentityDoc>
+					<!-- [0..1] Сведения о документе, удостоверяющем полномочия представителя -->
+					<identity:AuthorityDoc>
+						<!-- R [1..1] Тип документа -->
+						<identity:IdentityCardType code="4" codeSystem="1.2.643.5.1.13.13.99.2.313" codeSystemName="Документы, удостоверяющие полномочия законного представителя" displayName="Доверенность" codeSystemVersion="1.2"/>
+						<!-- [1..1] Серия документа -->
+						<identity:Series>66 АА</identity:Series>
+						<!-- R [1..1] Номер документа -->
+						<identity:Number>1234567</identity:Number>
+						<!-- [1..1] Сведения о том, кем выдан документ -->
+						<identity:IssueOrgName>Нотариус Истомина О.И. Адрес нотариальной конторы: 620000, г. Екатеринбург, пр. Космонавтов, дом 15 Лицензия N 6315 выдана Управлением Министерства юстиции РФ по гор. Екатеринбургу 12.12.1980</identity:IssueOrgName>
+						<!-- R [1..1] Дата выдачи документа -->
+						<identity:IssueDate value="20110112"/>
+					</identity:AuthorityDoc>
+					<!-- [0..1] Тип связи между представителем (физическое лицо) и гражданином -->
+					<code code="3" codeSystem="1.2.643.5.1.13.13.99.2.14" codeSystemName="Родственные и иные связи" displayName="Родственник" codeSystemVersion="1.1"/>
+					<!-- [0..1] Адрес фактического места жительства представителя -->
+					<addr>
+						<!-- R [1..1] Адрес (текстом) -->
+						<streetAddressLine> {{guardian.address.region}} {{guardian.address.regType}}, {{guardian.address.districtType}} {{guardian.address.district}}, {{guardian.address.cityType}} {{guardian.address.city}}, {{guardian.address.typePlace}} {{guardian.address.place}}, {{guardian.address.street}}, дом {{guardian.address.building}},квартира {{guardian.address.flat}} </streetAddressLine>
+						<!-- R [1..1] Код субъекта РФ -->
+						<address:stateCode code="{{guardian.address.regionCode}}" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{guardian.address.region}} {{guardian.address.regType}}" codeSystemVersion="6.3"/>
+						<!-- [1..1] Почтовый индекс -->
+						<postalCode>{{guardian.address.postCode}}</postalCode>
+						<!-- [1..1] Идентификатор адреса по ФИАС -->
+						<fias:Address>
+							<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+							<fias:AOGUID>{{guardian.address.FIAS}}</fias:AOGUID>
+							<!-- [1..1] Глобальный уникальный идентификатор дома -->
+							<fias:HOUSEGUID>067a2241-bda6-43c2-abad-ebc52c1db03b</fias:HOUSEGUID>
+						</fias:Address>
+					</addr>
+					<!-- [0..*] Контакты представителя -->
+					<telecom use="MC" value="tel:+79001491243"/>
+					<!-- [0..1] Сведения о законном представителе (физическом лице) -->
+					<guardianPerson>
+						<!-- R [1..1] ФИО законного представителя -->
+						<name>
+							<!-- R [1..1] Фамилия -->
+							<family>{{guardian.lastName}}</family>
+							<!-- R [1..1] Имя -->
+							<given>{{guardian.firstName}}</given>
+							<!-- [0..1] Отчество -->
+							<identity:Patronymic>{{guardian.secondName}}</identity:Patronymic>
+						</name>
+					</guardianPerson>
+					<!-- [0..1] Сведения о законном представителе (юридическом лице) -->
+				</guardian>
+			</patient>
+			<!-- R [1..1] Сведения об организации, оказывающей медицинскую помощь -->
+			<providerOrganization>
+				<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+				<id root="1.2.643.5.1.13.13.12.2.66.6841"/>
+				<!-- [0..1] Сведения о лицензии на осуществление медицинской деятельности -->
+				<id root="1.2.643.5.1.13.2.1.1.1504.101" extension="ЛО-66-01-006772" assigningAuthorityName="Министерство здравоохранения Свердловской области. Дата регистрации: 25.12.2020"/>
+				<!-- [1..1] Реквизиты организации -->
+				<identity:Props>
+					<!-- [0..1] Код ОГРН (не может быть представлен одновременно с ОГРНИП) -->
+					<identity:Ogrn>{{organization.ogrn}}</identity:Ogrn>
+					<!-- [0..1] Код ОГРНИП (не может быть представлен одновременно с ОГРН) -->
+					<!-- [0..1] Код ОКПО -->
+					<identity:Okpo>000000</identity:Okpo>
+					<!-- [0..1] Код ОКАТО -->
+					<identity:Okato>{{organization.regAddress.OKATO}}</identity:Okato>
+				</identity:Props>
+				<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+				<name>{{organization.fullName}}"</name>
+				<!-- [0..*] Контакты медицинской организации или ИП -->
+				<telecom value="tel:+73433123314"/>
+				<!-- [0..*] Контакты медицинской организации или ИП -->
+				<telecom value="tel:+73432546997"/>
+				<!-- [0..*] Контакты медицинской организации или ИП -->
+				<telecom value="tel:+73432546810"/>
+				<!-- [0..*] Контакты медицинской организации или ИП -->
+				<telecom value="mailto:mbucgkb1@yandex.ru"/>
+				<!-- [0..1] Адрес медицинской организации или ИП -->
+				<addr>
+					<!-- R [1..1] Адрес (текстом) -->
+					<streetAddressLine>{{organization.regAddress.cityType}}. {{organization.regAddress.city}}, {{organization.regAddress.street}}, {{organization.regAddress.building}}</streetAddressLine>
+					<!-- R [1..1] Код субъекта РФ -->
+					<address:stateCode code="{{organization.regAddress.regionCode}}" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{organization.regAddress.region}} {{organization.regType}}" codeSystemVersion="6.3"/>
+					<!-- [1..1] Почтовый индекс -->
+					<postalCode>{{organization.regAddress.postCode}}</postalCode>
+					<!-- [1..1] Идентификатор адреса по ФИАС -->
+					<fias:Address>
+						<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+						<fias:AOGUID>{{organization.regAddress.FIAS}}</fias:AOGUID>
+						<!-- [1..1] Глобальный уникальный идентификатор дома -->
+						<fias:HOUSEGUID>XXXXXXX-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+					</fias:Address>
+				</addr>
+			</providerOrganization>
+		</patientRole>
+	</recordTarget>
+	<!-- R [1..1] Сведения об авторе документа -->
+	<author>
+		<!-- [1..1] -->
+		<time nullFlavor="NI"/>
+		<!-- R [1..1] -->
+		<assignedAuthor>
+			<!-- R [1..1] Уникальный идентификатор автора в МИС -->
+			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.70" extension="{{author.guid}}"/>
+			<!-- R [1..1] СНИЛС автора -->
+			<id root="1.2.643.100.3" extension="{{author.SNILS}}"/>
+			<!-- R [1..1] Код должности автора -->
+			<code code="109" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="Должности медицинских и фармацевтических работников" displayName="врач-терапевт" codeSystemVersion="7.6"/>
+			<!-- [0..1] Адрес места работы автора документа -->
+			<addr>
+				<!-- R [1..1] Адрес (текстом) -->
+				<streetAddressLine>{{organization.regAddress.cityType}}. {{organization.regAddress.city}}, {{organization.regAddress.street}}, {{organization.regAddress.building}}</streetAddressLine>
+				<!-- R [1..1] Код субъекта РФ -->
+				<address:stateCode code="{{organization.regAddress.regionCode}}" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{organization.regAddress.region}} {{organization.regAddress.regionType}}" codeSystemVersion="6.3"/>
+				<!-- [1..1] Почтовый индекс -->
+				<postalCode>{{organization.regAddress.postCode}}</postalCode>
+				<!-- [1..1] Идентификатор адреса по ФИАС -->
+				<fias:Address>
+					<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+					<fias:AOGUID>{{organization.regAddress.FIAS}}</fias:AOGUID>
+					<!-- [1..1] Глобальный уникальный идентификатор дома -->
+					<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+				</fias:Address>
+			</addr>
+			<!-- [0..*] Контакты автора -->
+			<telecom use="WP" value="tel:+73433123314"/>
+			<!-- R [1..1] -->
+			<assignedPerson>
+				<!-- R [1..1] ФИО автора -->
+				<name>
+					<!-- R [1..1] Фамилия -->
+					<family>{{author.lastName}}</family>
+					<!-- R [1..1] Имя -->
+					<given>{{author.firstName}}</given>
+					<!-- [0..1] Отчество -->
+					<identity:Patronymic>{{author.secondName}}</identity:Patronymic>
+				</name>
+			</assignedPerson>
+			<!-- [0..1] Сведения о медицинской организации, где работает автор -->
+			<representedOrganization classCode="ORG">
+				<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+				<id root="1.2.643.5.1.13.13.12.2.66.6841"/>
+				<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+				<name>Государственно Бюджетное Учреждение Здравоохранения Свердловской Области "Центральная городская клиническая больница № 1 город Екатеринбург"</name>
+				<!-- [0..*] Контакты медицинской организации или ИП -->
+				<telecom value="tel:+73433123314"/>
+				<!-- [0..1] Адрес медицинской организации или ИП -->
+				<addr>
+					<!-- R [1..1] Адрес (текстом) -->
+					<streetAddressLine>{{organization.regAddress.cityType}}. {{organization.regAddress.city}}, {{organization.regAddress.street}}, {{organization.regAddress.building}}</streetAddressLine>
+					<!-- R [1..1] Код субъекта РФ -->
+					<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="{{organization.regAddress.region}} {{organization.regAddress.regionType}}" codeSystemVersion="6.3"/>
+					<!-- [1..1] Почтовый индекс -->
+					<postalCode>{{organization.regAddress.postCode}}</postalCode>
+					<!-- [1..1] Идентификатор адреса по ФИАС -->
+					<fias:Address>
+						<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+						<fias:AOGUID>{{organization.regAddress.FIAS}}</fias:AOGUID>
+						<!-- [1..1] Глобальный уникальный идентификатор дома -->
+						<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+					</fias:Address>
+				</addr>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<!-- R [1..1] Сведения о владельце документа -->
+	<custodian>
+		<!-- R [1..1] -->
+		<assignedCustodian>
+			<!-- R [1..1] Сведения об организации-владельце документа -->
+			<representedCustodianOrganization classCode="ORG">
+				<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+				<id root="1.2.643.5.1.13.13.12.2.66.6841"/>
+				<!-- R [1..1] Наименование организации или ФИО ИП -->
+				<name>Государственно Бюджетное Учреждение Здравоохранения Свердловской Области "Центральная городская клиническая больница № 1 город Екатеринбург"</name>
+				<!-- [0..1] Телефон медицинской организации или ИП -->
+				<telecom value="tel:+73433123314"/>
+				<!-- R [1..1] Адрес медицинской организации или ИП -->
+				<addr>
+					<!-- R [1..1] Адрес (текстом) -->
+					<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+					<!-- R [1..1] Код субъекта РФ -->
+					<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+					<!-- [1..1] Почтовый индекс -->
+					<postalCode>620026</postalCode>
+					<!-- [1..1] Идентификатор адреса по ФИАС -->
+					<fias:Address>
+						<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+						<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+						<!-- [1..1] Глобальный уникальный идентификатор дома -->
+						<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+					</fias:Address>
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<!-- R [1..1] Сведения о получателе документа [1] -->
+	<informationRecipient>
+		<!-- R [1..1] -->
+		<intendedRecipient>
+			<!-- R [1..1] Сведения об организации-получателе документа -->
+			<receivedOrganization>
+				<!-- R [1..1] Уникальный идентификатор получающей организации -->
+				<id root="1.2.643.5.1.13"/>
+				<!-- R [1..1] Наименование получающей организации -->
+				<name>Министерство здравоохранения Российской Федерации</name>
+			</receivedOrganization>
+		</intendedRecipient>
+	</informationRecipient>
+	<!-- [0..*] Сведения о получателе документа [2] -->
+	<!-- R [1..1] Сведения о лице, придавшем юридическую силу документу -->
+	<legalAuthenticator>
+		<!-- [1..1] -->
+		<time nullFlavor="NI"/>
+		<!-- [1..1] -->
+		<signatureCode nullFlavor="NI"/>
+		<!-- R [1..1] -->
+		<assignedEntity>
+			<!-- R [1..1] Уникальный идентификатор лица, придавшего юридическую силу документу, в МИС -->
+			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.70" extension="7001"/>
+			<!-- R [1..1] СНИЛС лица, придавшего юридическую силу документу -->
+			<id root="1.2.643.100.3" extension="12345678971"/>
+			<!-- R [1..1] Код должности лица, придавшего юридическую силу документу -->
+			<code code="430" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="Должности медицинских и фармацевтических работников" displayName="заведующий отделением медицинской организации" codeSystemVersion="7.6"/>
+			<!-- [0..1] Адрес места работы лица, придавшего юридическую силу документу -->
+			<addr>
+				<!-- R [1..1] Адрес (текстом) -->
+				<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+				<!-- R [1..1] Код субъекта РФ -->
+				<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+				<!-- [1..1] Почтовый индекс -->
+				<postalCode>620026</postalCode>
+				<!-- [1..1] Идентификатор адреса по ФИАС -->
+				<fias:Address>
+					<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+					<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+					<!-- [1..1] Глобальный уникальный идентификатор дома -->
+					<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+				</fias:Address>
+			</addr>
+			<!-- [0..*] Контакты лица, придавшего юридическую силу документу -->
+			<telecom use="WP" value="tel:+73433123314"/>
+			<!-- R [1..1] -->
+			<assignedPerson>
+				<!-- R [1..1] ФИО лица, придавшего юридическую силу документу -->
+				<name>
+					<!-- R [1..1] Фамилия -->
+					<family>Ульянов</family>
+					<!-- R [1..1] Имя -->
+					<given>Илья</given>
+					<!-- [0..1] Отчество -->
+					<identity:Patronymic>Николаевич</identity:Patronymic>
+				</name>
+			</assignedPerson>
+			<!-- [0..1] Сведения о медицинской организации, где работает лицо, придавшее юридическую силу документу -->
+			<representedOrganization classCode="ORG">
+				<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+				<id root="1.2.643.5.1.13.13.12.2.66.6841"/>
+				<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+				<name>Государственно Бюджетное Учреждение Здравоохранения Свердловской Области "Центральная городская клиническая больница № 1 город Екатеринбург"</name>
+				<!-- [0..*] Контакты медицинской организации или ИП -->
+				<telecom value="tel:+73433123314"/>
+				<!-- [0..1] Адрес медицинской организации или ИП -->
+				<addr>
+					<!-- R [1..1] Адрес (текстом) -->
+					<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+					<!-- R [1..1] Код субъекта РФ -->
+					<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+					<!-- [1..1] Почтовый индекс -->
+					<postalCode>620026</postalCode>
+					<!-- [1..1] Идентификатор адреса по ФИАС -->
+					<fias:Address>
+						<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+						<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+						<!-- [1..1] Глобальный уникальный идентификатор дома -->
+						<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+					</fias:Address>
+				</addr>
+			</representedOrganization>
+		</assignedEntity>
+	</legalAuthenticator>
+	<!-- R [1..1] Сведения об источнике оплаты -->
+	<participant typeCode="IND">
+		<!-- R [1..1] -->
+		<associatedEntity classCode="GUAR">
+			<!-- R [1..1] Тип источника оплаты -->
+			<code code="1" codeSystem="1.2.643.5.1.13.13.11.1039" codeSystemName="Источники оплаты медицинской помощи" displayName="Средства обязательного медицинского страхования" codeSystemVersion="5.2"/>
+			<!-- [1..1] Сведения о документе-основании -->
+			<identity:DocInfo>
+				<!-- R [1..1] Тип документа-основания -->
+				<identity:IdentityDocType code="1" codeSystem="1.2.643.5.1.13.13.99.2.724" codeSystemName="Типы документов оснований" displayName="Полис ОМС" codeSystemVersion="1.1"/>
+				<!-- [1..1] Вид полиса ОМС -->
+				<identity:InsurancePolicyType code="2" codeSystem="1.2.643.5.1.13.13.11.1035" codeSystemName="Виды полиса обязательного медицинского страхования" displayName="Полис ОМС единого образца, бессрочный" codeSystemVersion="1.3"/>
+				<!-- [1..1] Серия документа-основания -->
+				<identity:Series nullFlavor="NA"/>
+				<!-- [1..1] Номер документа-основания -->
+				<identity:Number>665113088600</identity:Number>
+				<!-- [1..1] ИНН организации или физического лица -->
+				<identity:INN>6685000585</identity:INN>
+				<!-- [1..1] Срок действия документа-основания -->
+				<identity:effectiveTime>
+					<!-- R [1..1] Дата начала действия документа-основания -->
+					<identity:low value="20150726"/>
+					<!-- [1..1] Дата окончания действия документа-основания -->
+					<identity:high nullFlavor="NAV"/>
+				</identity:effectiveTime>
+			</identity:DocInfo>
+			<!-- [0..1] Сведения об организации (страховой компании или юридическом лице) -->
+			<scopingOrganization>
+				<!-- [1..1] Уникальный идентификатор страховой компании или юридического лица -->
+				<id root="1.2.643.5.1.13.13.99.2.183" extension="66004"/>
+				<!-- R [1..1] Наименование страховой компании или юридического лица -->
+				<name>СМК "АСТРАМЕД-МС" (АО)</name>
+				<!-- [1..*] Контакты страховой компании или юридического лица -->
+				<telecom value="tel:+73433805396"/>
+				<!-- [1..1] Адрес страховой компании или юридического лица -->
+				<addr>
+					<!-- R [1..1] Адрес (текстом) -->
+					<streetAddressLine>Свердловская область, г. Екатеринбург, ул. 8 марта, 37</streetAddressLine>
+					<!-- R [1..1] Код субъекта РФ -->
+					<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+					<!-- [1..1] Почтовый индекс -->
+					<postalCode>620014</postalCode>
+					<!-- [1..1] Идентификатор адреса по ФИАС -->
+					<fias:Address>
+						<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+						<fias:AOGUID>0c07555a-1c4c-482d-ab2c-d9d184d3fb72</fias:AOGUID>
+						<!-- [1..1] Глобальный уникальный идентификатор дома -->
+						<fias:HOUSEGUID>9c21b9d3-195b-4176-b851-cb4cbdb17912</fias:HOUSEGUID>
+					</fias:Address>
+				</addr>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+	<!-- [0..1] Сведения о направившем лице, направившей организации -->
+	<participant typeCode="REF">
+		<!-- R [1..1] -->
+		<associatedEntity classCode="PROV">
+			<!-- [1..1] Уникальный идентификатор направившего лица в МИС -->
+			<id root="1.2.643.5.1.13.13.12.2.66.6949.100.1.1.70" extension="7002"/>
+			<!-- [1..1] СНИЛС направившего лица -->
+			<id root="1.2.643.100.3" extension="12345678972"/>
+			<!-- R [1..1] Код должности направившего лица -->
+			<code code="109" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="Должности медицинских и фармацевтических работников" displayName="врач-терапевт" codeSystemVersion="7.6"/>
+			<!-- [0..1] Адрес места работы направившего лица -->
+			<addr>
+				<!-- R [1..1] Адрес (текстом) -->
+				<streetAddressLine>г. Екатеринбург, ул. Луначарского, 182</streetAddressLine>
+				<!-- R [1..1] Код субъекта РФ -->
+				<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+				<!-- [1..1] Почтовый индекс -->
+				<postalCode>620075</postalCode>
+				<!-- [1..1] Идентификатор адреса по ФИАС -->
+				<fias:Address>
+					<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+					<fias:AOGUID>5d7839a6-b18d-43e7-9260-3ce987cf15d7</fias:AOGUID>
+					<!-- [1..1] Глобальный уникальный идентификатор дома -->
+					<fias:HOUSEGUID>f6d8638a-c60d-4598-b79e-b2f5e75aa931</fias:HOUSEGUID>
+				</fias:Address>
+			</addr>
+			<!-- [0..*] Контакты направившего лица -->
+			<telecom use="WP" value="tel:+73433506185"/>
+			<!-- R [1..1] -->
+			<associatedPerson>
+				<!-- R [1..1] ФИО направившего лица -->
+				<name>
+					<!-- R [1..1] Фамилия -->
+					<family>Филатова</family>
+					<!-- R [1..1] Имя -->
+					<given>Ирина</given>
+					<!-- [0..1] Отчество -->
+					<identity:Patronymic>Леонидовна</identity:Patronymic>
+				</name>
+			</associatedPerson>
+			<!-- R [1..1] Сведения об организации, где работает направившее лицо -->
+			<scopingOrganization>
+				<!-- [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+				<id root="1.2.643.5.1.13.13.12.2.66.6949"/>
+				<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+				<name>Федеральное государственное бюджетное учреждение здравоохранения Поликлиника Уральского отделения Российской академии наук</name>
+				<!-- [0..*] Контакты медицинской организации или ИП -->
+				<telecom value="tel:+73433506185"/>
+				<!-- [0..1] Адрес организации или ИП -->
+				<addr>
+					<!-- R [1..1] Адрес (текстом) -->
+					<streetAddressLine>г. Екатеринбург, ул. Луначарского, 182</streetAddressLine>
+					<!-- R [1..1] Код субъекта РФ -->
+					<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+					<!-- [1..1] Почтовый индекс -->
+					<postalCode>620075</postalCode>
+					<!-- [1..1] Идентификатор адреса по ФИАС -->
+					<fias:Address>
+						<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+						<fias:AOGUID>5d7839a6-b18d-43e7-9260-3ce987cf15d7</fias:AOGUID>
+						<!-- [1..1] Глобальный уникальный идентификатор дома -->
+						<fias:HOUSEGUID>f6d8638a-c60d-4598-b79e-b2f5e75aa931</fias:HOUSEGUID>
+					</fias:Address>
+				</addr>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+	<!-- [0..1] Сведения о направлении -->
+	<inFulfillmentOf>
+		<!-- R [1..1] -->
+		<order>
+			<!-- R [1..1] Уникальный идентификатор направления в МИС -->
+			<id root="1.2.643.5.1.13.13.12.2.66.6949.100.1.1.51" extension="5100"/>
+			<!-- R [1..1] Вид медицинского направления -->
+			<code code="3" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemName="Виды медицинской документации" displayName="Направление на госпитализацию, восстановительное лечение, обследование, консультацию" codeSystemVersion="5.6"/>
+		</order>
+	</inFulfillmentOf>
+	<!-- R [1..1] Сведения о документируемом событии -->
+	<documentationOf>
+		<!-- R [1..1] -->
+		<serviceEvent>
+			<!-- R [1..1] Тип документируемого события -->
+			<code code="13" codeSystem="1.2.643.5.1.13.13.99.2.726" codeSystemName="Типы документированных событий" displayName="Госпитализация" codeSystemVersion="2.7"/>
+			<!-- R [1..1] Даты госпитализации -->
+			<effectiveTime>
+				<!-- R [1..1] Дата и время поступления в приемное отделение -->
+				<low value="202205091550+0500"/>
+				<!-- R [1..1] Дата и время выписки -->
+				<high value="202205311000+0500"/>
+			</effectiveTime>
+			<!-- R [1..1] Форма оказания медицинской помощи -->
+			<medService:serviceForm code="1" codeSystem="1.2.643.5.1.13.13.11.1551" codeSystemName="Формы оказания медицинской помощи" displayName="плановая" codeSystemVersion="1.1"/>
+			<!-- [0..1] Вид медицинской помощи -->
+			<medService:serviceType code="4" codeSystem="1.2.643.5.1.13.13.11.1034" codeSystemName="Виды медицинской помощи" displayName="Специализированная медицинская помощь" codeSystemVersion="4.2"/>
+			<!-- [0..1] Условия оказания медицинской помощи -->
+			<medService:serviceCond code="1" codeSystem="1.2.643.5.1.13.13.99.2.322" codeSystemName="Условия оказания медицинской помощи" displayName="Стационарно" codeSystemVersion="1.2"/>
+		</serviceEvent>
+	</documentationOf>
+	<!-- R [1..1] Сведения о случае оказания медицинской помощи -->
+	<componentOf>
+		<!-- R [1..1] -->
+		<encompassingEncounter>
+			<!-- R [1..1] Уникальный идентификатор случая оказания медицинской помощи в МИС -->
+			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.15" extension="111123"/>
+			<!-- R [1..1] Уникальный идентификатор медицинской карты в МИС -->
+			<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.16" extension="1356"/>
+			<!-- R [1..1] Тип медицинской карты -->
+			<code code="2" codeSystem="1.2.643.5.1.13.13.99.2.723" codeSystemName="Типы медицинских карт" displayName="Стационарная медицинская карта" codeSystemVersion="1.1"/>
+			<!-- R [1..1] Вид медицинской карты -->
+			<medService:DocType code="94" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemName="Виды медицинской документации" displayName="Медицинская карта стационарного больного" codeSystemVersion="5.6"/>
+			<!-- R [1..1] Даты случая -->
+			<effectiveTime>
+				<!-- R [1..1] Дата начала случая -->
+				<low value="20220509"/>
+				<!-- R [1..1] Дата окончания случая -->
+				<high value="{{dateFormat effectiveTime.high 'YYYYMMDD'}}"/>
+			</effectiveTime>
+			<!-- R [1..1] Исход госпитализации -->
+			<dischargeDispositionCode code="1" codeSystem="1.2.643.5.1.13.13.11.1470" codeSystemName="Исходы госпитализации" displayName="выписан" codeSystemVersion="2.1"/>
+		</encompassingEncounter>
+	</componentOf>
+	<!-- R [1..1] Тело документа -->
+	<component>
+		<!-- R [1..1] Структурированное тело документа -->
+		<structuredBody>
+			<!-- R [1..1] СЕКЦИЯ: "Сведения о документе" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Сведения о документе" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Сведения о документе</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>Статистическая карта выбывшего из стационара круглосуточного пребывания</text>
+					<!-- R [1..1] Тип статистической карты выбывшего из стационара -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="11005" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Вид документа" codeSystemVersion="1.95"/>
+							<!-- R [1..1] Значение поля -->
+							<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.99.2.971" codeSystemName="Виды статистических карт выбывшего из стационара" displayName="Статистическая карта выбывшего из стационара круглосуточного пребывания" codeSystemVersion="1.1"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- R [1..1] СЕКЦИЯ: "Информация о пациенте" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="PATINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Информация о пациенте" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Информация о пациенте</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+					<!-- R [1..1] Социальный статус -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12088" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Социальный статус" codeSystemVersion="1.95"/>
+							<!-- [1..1] Код социальной группы -->
+							<value xsi:type="CD" code="6" codeSystem="1.2.643.5.1.13.13.11.1038" codeSystemName="Социальные группы населения в учетной медицинской документации" displayName="Военнослужащий" codeSystemVersion="13.1"/>
+						</observation>
+					</entry>
+					<!-- [0..1] Категория военнослужащего -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="9051" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Категория военнослужащего" codeSystemVersion="1.95"/>
+							<!-- R [1..1] Код категории военнослужащего -->
+							<value xsi:type="CD" code="0210" codeSystem="1.2.643.5.1.13.13.99.2.950" codeSystemName="Общероссийский классификатор занятий" displayName="Военнослужащие неофицерского состава" codeSystemVersion="1.1"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- [0..1] СЕКЦИЯ: "Акушерский анамнез" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="OBSTETRICANAMN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Акушерский анамнез" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Акушерский анамнез</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+					<!-- R [1..1] Данная беременность по счету -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12310" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Текущая беременность по счёту" codeSystemVersion="1.95"/>							<!-- R [1..1] Значение поля -->
+							<value xsi:type="INT" value="1"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- R [1..1] СЕКЦИЯ: "Льготы" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="BENEFITS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Льготы" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Льготы</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+					<!-- R [1..1] Льготная категория -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="811" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Льготная категория" codeSystemVersion="1.95"/>
+							<!-- [1..1] Код льготной категории -->
+							<value xsi:type="CD" code="1.00000.0216" codeSystem="1.2.643.5.1.13.13.99.2.541" codeSystemName="Льготные категории граждан" displayName="Инвалиды III группы" codeSystemVersion="6.16"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- R [1..1] СЕКЦИЯ: "Состояние при поступлении" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="STATEADM" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Состояние при поступлении" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Состояние при поступлении</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+					<!-- R [1..1] Кем доставлен -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код канала госпитализации -->
+							<code code="1" codeSystem="1.2.643.5.1.13.13.11.1496" codeSystemName="Пути поступления пациента на госпитализацию" displayName="Доставлен бригадой скорой помощи" codeSystemVersion="2.1"/>
+							<!-- [0..1] Номер наряда скорой помощи -->
+							<text>66-13</text>
+							<!-- R [1..1] Кем доставлен (текстом) -->
+							<value xsi:type="ST">бригадой скорой помощи</value>
+						</observation>
+					</entry>
+					<!-- R [1..1] Доставлен в состоянии опьянения -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12089" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Наличие клиники опьянения" codeSystemVersion="1.95"/>
+							<!-- [1..1] Вид опьянения (если имеется клиника опьянения) -->
+							<value xsi:type="CD" code="2" codeSystem="1.2.643.5.1.13.13.99.2.390" codeSystemVersion="2.1" codeSystemName="Состояния алкогольного (наркотического) опьянения" displayName="Наркотическое опьянение"/>
+						</observation>
+					</entry>
+					<!-- R [1..1] Вид случая госпитализации или обращения (первично, повторно) -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="817" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Порядок случаев госпитализации или обращения" codeSystemVersion="1.95"/>
+							<!-- [1..1] Значение поля -->
+							<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.11.1007" codeSystemName="Вид случая госпитализации или обращения (первичный, повторный)" displayName="Первичный" codeSystemVersion="2.1"/>
+						</observation>
+					</entry>
+					<!-- R [1..1] Доставлен в стационар от начала заболевания (получения травмы) -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="9042" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Время, прошедшее от момента начала заболевания (получения травмы) до момента доставки в медицинскую организацию" codeSystemVersion="1.95"/>
+							<!-- [1..1] Время доставки больного в стационар от начала заболевания (получения травмы) -->
+							<value xsi:type="CD" code="3" codeSystem="1.2.643.5.1.13.13.99.2.408" codeSystemName="Время доставки больного в стационар от начала заболевания (получения травмы)" displayName="Позднее 24-х часов" codeSystemVersion="2.1"/>
+						</observation>
+					</entry>
+					<!-- R [1..1] Вид травмы -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="824" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Тип травмы" codeSystemVersion="1.95"/>
+							<!-- [1..1] Значение поля -->
+							<value xsi:type="CD" code="8" codeSystem="1.2.643.5.1.13.13.11.1036" codeSystemVersion="3.1" codeSystemName="Вид травмы по способу получения" displayName="Бытовая"/>
+						</observation>
+					</entry>
+					<!-- [0..1] СЕКЦИЯ: "Диагноз направившего учреждения" -->
+					<component>
+						<!-- R [1..1] -->
+						<section>
+							<!-- R [1..1] Код секции -->
+							<code code="REFDGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Диагноз направившего учреждения" codeSystemVersion="1.27"/>
+							<!-- R [1..1] Название секции -->
+							<title>Диагноз направившего учреждения</title>
+							<!-- R [1..1] Человекочитаемое наполнение секции -->
+							<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+							<!-- R [1..1] Сведения об основном заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="1" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Основное заболевание" codeSystemVersion="1.3"/>
+									<!-- R [1..1] Клинический диагноз -->
+									<text>Травма матки без открытой раны в брюшную полость</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220506"/>
+									<!-- R [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="S37.60" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Травма матки без открытой раны в брюшную полость" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="1" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Предварительный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- [0..*] Сведения об осложнении -->
+							<!-- [0..*] Сведения о сопутствующем заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Сопутствующее заболевание" codeSystemVersion="1.3"/>
+									<!-- R [1..1] Клинический диагноз -->
+									<text>Сахарный диабет 1 типа</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20020315"/>
+									<!-- R [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="E10" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Сахарный диабет 1 типа" codeSystemVersion="2.20"/>
+									<!-- [0..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="3" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+								</observation>
+							</entry>
+						</section>
+					</component>
+					<!-- R [1..1] СЕКЦИЯ: "Диагноз приемного отделения" -->
+					<component>
+						<!-- R [1..1] -->
+						<section>
+							<!-- R [1..1] Код секции -->
+							<code code="ERDGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Диагноз приемного отделения" codeSystemVersion="1.27"/>
+							<!-- R [1..1] Название секции -->
+							<title>Диагноз приемного отделения</title>
+							<!-- R [1..1] Человекочитаемое наполнение секции -->
+							<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+							<!-- R [1..1] Сведения об основном заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="1" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Основное заболевание" codeSystemVersion="1.3"/>
+									<!-- R [1..1] Клинический диагноз -->
+									<text>Травма матки без открытой раны в брюшную полость</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220509"/>
+									<!-- R [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="S37.60" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Травма матки без открытой раны в брюшную полость" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="1" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Предварительный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- [0..*] Сведения об осложнении -->
+							<!-- [0..*] Сведения о сопутствующем заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Сопутствующее заболевание" codeSystemVersion="1.3"/>
+									<!-- R [1..1] Клинический диагноз -->
+									<text>Сахарный диабет 1 типа</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20020315"/>
+									<!-- R [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="E10" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Сахарный диабет 1 типа" codeSystemVersion="2.20"/>
+									<!-- [0..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="2" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Этапный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения о сопутствующем заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Сопутствующее заболевание" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>Другие витамин-B12-дефицитные анемии, связанные с питанием</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220415"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="D51.3" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Другие витамин-B12-дефицитные анемии, связанные с питанием" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="2" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Этапный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+						</section>
+					</component>
+				</section>
+			</component>
+			<!-- R [1..1] СЕКЦИЯ: "Сведения о пребывании пациента по отделениям" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="PATIENTROUTE" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Сведения о пребывании пациента по отделениям" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Движение пациента по отделениям</title>
+					<!-- [0..1] Человекочитаемое наполнение секции -->
+					<!-- R [1..*] СЕКЦИЯ: "Сведения о пребывании пациента в отделении" -->
+					<component>
+						<!-- R [1..1] -->
+						<section>
+							<!-- R [1..1] Код секции -->
+							<code code="DEPARTINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Сведения о пребывании пациента в отделении" codeSystemVersion="1.27"/>
+							<!-- R [1..1] Название секции -->
+							<title>Хирургическое отделение</title>
+							<!-- R [1..1] Человекочитаемое наполнение секции -->
+							<text>
+								<table>
+									<tbody>
+										<tr>
+											<th>Код отделения</th>
+											<th>Профиль коек</th>
+											<th>Код врача</th>
+											<th>Дата поступления</th>
+											<th>Дата выписки, перевода</th>
+											<th>Код диагноза по МКБ</th>
+											<th>Код медицинского стандарта</th>
+											<th>Код прерванного случая</th>
+											<th>Вид оплаты</th>
+										</tr>
+										<tr>
+											<td>112699</td>
+											<td>18</td>
+											<td>73</td>
+											<td>09-05-2022 16:30</td>
+											<td>12-05-2022 10:20</td>
+											<td>O03.1</td>
+											<td>—</td>
+											<td>—</td>
+											<td>1</td>
+										</tr>
+									</tbody>
+								</table>
+							</text>
+							<!-- R [1..1] Сведения о пребывании пациента в отделении -->
+							<entry>
+								<!-- R [1..1] -->
+								<encounter classCode="ENC" moodCode="EVN">
+									<!-- R [1..1] Сроки пребывания пациента в отделении -->
+									<effectiveTime>
+										<!-- R [1..1] Дата и время поступления -->
+										<low value="202205091630+0500"/>
+										<!-- R [1..1] Дата и время выписки, перевода пациента -->
+										<high value="202205121020+0500"/>
+									</effectiveTime>
+									<!-- R [1..1] Сведения о лечащем враче -->
+									<performer>
+										<!-- R [1..1] -->
+										<assignedEntity>
+											<!-- R [1..1] Уникальный идентификатор лечащего врача в МИС -->
+											<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.70" extension="73"/>
+											<!-- R [1..1] СНИЛС лечащего врача -->
+											<id root="1.2.643.100.3" extension="12345678971"/>
+											<!-- R [1..1] Код должности лечащего врача -->
+											<code code="122" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="Должности медицинских и фармацевтических работников" displayName="врач-хирург" codeSystemVersion="7.6"/>
+											<!-- [0..1] Адрес места работы лечащего врача -->
+											<addr>
+												<!-- R [1..1] Адрес (текстом) -->
+												<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+												<!-- R [1..1] Код субъекта РФ -->
+												<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+												<!-- [1..1] Почтовый индекс -->
+												<postalCode>620026</postalCode>
+												<!-- [1..1] Идентификатор адреса по ФИАС -->
+												<fias:Address>
+													<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+													<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+													<!-- [1..1] Глобальный уникальный идентификатор дома -->
+													<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+												</fias:Address>
+											</addr>
+											<!-- [0..*] Контакты лечащего врача -->
+											<telecom use="WP" value="tel:+73433123314"/>
+											<!-- R [1..1] -->
+											<assignedPerson>
+												<!-- R [1..1] ФИО лечащего врача -->
+												<name>
+													<!-- R [1..1] Фамилия -->
+													<family>Маркелов</family>
+													<!-- R [1..1] Имя -->
+													<given>Александр</given>
+													<!-- [0..1] Отчество -->
+													<identity:Patronymic>Николаевич</identity:Patronymic>
+												</name>
+											</assignedPerson>
+											<!-- [0..1] Сведения о медицинской организации, где работает лечащий врач -->
+											<representedOrganization classCode="ORG">
+												<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+												<id root="1.2.643.5.1.13.13.12.2.66.6841" extension="1.2.643.5.1.13.13.12.2.66.6841.0.112699"/>
+												<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+												<name>Государственно Бюджетное Учреждение Здравоохранения Свердловской Области "Центральная городская клиническая больница № 1 город Екатеринбург"</name>
+												<!-- [0..*] Контакты медицинской организации или ИП -->
+												<telecom value="tel:+73433123314"/>
+												<!-- [0..1] Адрес медицинской организации или ИП -->
+												<addr>
+													<!-- R [1..1] Адрес (текстом) -->
+													<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+													<!-- R [1..1] Код субъекта РФ -->
+													<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+													<!-- [1..1] Почтовый индекс -->
+													<postalCode>620026</postalCode>
+													<!-- [1..1] Идентификатор адреса по ФИАС -->
+													<fias:Address>
+														<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+														<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+														<!-- [1..1] Глобальный уникальный идентификатор дома -->
+														<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+													</fias:Address>
+												</addr>
+											</representedOrganization>
+										</assignedEntity>
+									</performer>
+									<!-- R [1..1] Сведения об отделении, где пребывал пациент -->
+									<participant typeCode="LOC">
+										<!-- R [1..1] -->
+										<participantRole classCode="SDLOC">
+											<!-- [1..1] Код отделения -->
+											<id root="1.2.643.5.1.13.13.12.2.66.6841.0.112699"/>
+											<!-- [0..1] -->
+											<playingEntity>
+												<!-- R [1..1] Наименование подразделения -->
+												<name>Хирургическое</name>
+											</playingEntity>
+										</participantRole>
+									</participant>
+									<!-- R [1..1] Профиль койки -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="6024" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Профиль койки" codeSystemVersion="1.95"/>
+											<!-- R [1..1] Значение поля -->
+											<value xsi:type="CD" code="18" codeSystem="1.2.643.5.1.13.13.11.1069" codeSystemName="Номенклатура коечного фонда медицинской организации" displayName="Хирургические для взрослых" codeSystemVersion="4.4"/>
+										</observation>
+									</entryRelationship>
+									<!-- R [1..1] Код диагноза по МКБ -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="838" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Диагноз" codeSystemVersion="1.95"/>
+											<!-- R [1..1] Код МКБ -->
+											<value xsi:type="CD" code="O03.1" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Самопроизвольный аборт неполный, осложнившийся длительным или чрезмерным кровотечением" codeSystemVersion="2.20"/>
+										</observation>
+									</entryRelationship>
+									<!-- R [1..1] Код медицинского стандарта -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="9043" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Код медицинского стандарта" codeSystemVersion="1.95"/>
+											<!-- [1..1] Код медицинского стандарта -->
+											<value xsi:type="ST" nullFlavor="NA"/>
+										</observation>
+									</entryRelationship>
+									<!-- R [1..1] Код прерванного случая -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="9044" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Код прерванного случая" codeSystemVersion="1.95"/>
+											<!-- [1..1] Код прерванного случая -->
+											<value xsi:type="ST" nullFlavor="NA"/>
+										</observation>
+									</entryRelationship>
+									<!-- R [1..1] Вид оплаты -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="827" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Источник оплаты медицинской помощи" codeSystemVersion="1.95"/>
+											<!-- R [1..1] Вид оплаты -->
+											<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.11.1039" codeSystemName="Источники оплаты медицинской помощи" displayName="Средства обязательного медицинского страхования" codeSystemVersion="5.2"/>
+										</observation>
+									</entryRelationship>
+								</encounter>
+							</entry>
+						</section>
+					</component>
+					<!-- R [1..*] СЕКЦИЯ: "Сведения о пребывании пациента в отделении" -->
+					<component>
+						<!-- R [1..1] -->
+						<section>
+							<!-- R [1..1] Код секции -->
+							<code code="DEPARTINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Сведения о пребывании пациента в отделении" codeSystemVersion="1.27"/>
+							<!-- R [1..1] Название секции -->
+							<title>Гинекологическое отделение</title>
+							<!-- R [1..1] Человекочитаемое наполнение секции -->
+							<text>
+								<table>
+									<tbody>
+										<tr>
+											<th>Код отделения</th>
+											<th>Профиль коек</th>
+											<th>Код врача</th>
+											<th>Дата поступления</th>
+											<th>Дата выписки, перевода</th>
+											<th>Код диагноза по МКБ</th>
+											<th>Код медицинского стандарта</th>
+											<th>Код прерванного случая</th>
+											<th>Вид оплаты</th>
+										</tr>
+										<tr>
+											<td>112721</td>
+											<td>39</td>
+											<td>70</td>
+											<td>12-05-2022 10:20</td>
+											<td>31-05-2022 10:00</td>
+											<td>O03.1</td>
+											<td>13-666</td>
+											<td>6</td>
+											<td>1</td>
+										</tr>
+									</tbody>
+								</table>
+							</text>
+							<!-- R [1..1] Сведения о пребывании пациента в отделении -->
+							<entry>
+								<!-- R [1..1] -->
+								<encounter classCode="ENC" moodCode="EVN">
+									<!-- R [1..1] Сроки пребывания пациента в отделении -->
+									<effectiveTime>
+										<!-- R [1..1] Дата и время поступления -->
+										<low value="202205121020+0500"/>
+										<!-- R [1..1] Дата и время выписки, перевода пациента -->
+										<high value="202205311000+0500"/>
+									</effectiveTime>
+									<!-- R [1..1] Сведения о лечащем враче -->
+									<performer>
+										<!-- R [1..1] -->
+										<assignedEntity>
+											<!-- R [1..1] Уникальный идентификатор лечащего врача в МИС -->
+											<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.70" extension="70"/>
+											<!-- R [1..1] СНИЛС лечащего врача -->
+											<id root="1.2.643.100.3" extension="12345678970"/>
+											<!-- R [1..1] Код должности лечащего врача -->
+											<code code="109" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="Должности медицинских и фармацевтических работников" displayName="врач-терапевт" codeSystemVersion="7.6"/>
+											<!-- [0..1] Адрес места работы лечащего врача -->
+											<addr>
+												<!-- R [1..1] Адрес (текстом) -->
+												<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+												<!-- R [1..1] Код субъекта РФ -->
+												<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+												<!-- [1..1] Почтовый индекс -->
+												<postalCode>620026</postalCode>
+												<!-- [1..1] Идентификатор адреса по ФИАС -->
+												<fias:Address>
+													<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+													<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+													<!-- [1..1] Глобальный уникальный идентификатор дома -->
+													<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+												</fias:Address>
+											</addr>
+											<!-- [0..*] Контакты лечащего врача -->
+											<telecom use="WP" value="tel:+73433123314"/>
+											<!-- R [1..1] -->
+											<assignedPerson>
+												<!-- R [1..1] ФИО лечащего врача -->
+												<name>
+													<!-- R [1..1] Фамилия -->
+													<family>Крупская</family>
+													<!-- R [1..1] Имя -->
+													<given>Надежда</given>
+													<!-- [0..1] Отчество -->
+													<identity:Patronymic>Константиновна</identity:Patronymic>
+												</name>
+											</assignedPerson>
+											<!-- [0..1] Сведения о медицинской организации, где работает лечащий врач -->
+											<representedOrganization classCode="ORG">
+												<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+												<id root="1.2.643.5.1.13.13.12.2.66.6841"/>
+												<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+												<name>Государственно Бюджетное Учреждение Здравоохранения Свердловской Области "Центральная городская клиническая больница № 1 город Екатеринбург"</name>
+												<!-- [0..*] Контакты медицинской организации или ИП -->
+												<telecom value="tel:+73433123314"/>
+												<!-- [0..1] Адрес медицинской организации или ИП -->
+												<addr>
+													<!-- R [1..1] Адрес (текстом) -->
+													<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+													<!-- R [1..1] Код субъекта РФ -->
+													<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+													<!-- [1..1] Почтовый индекс -->
+													<postalCode>620026</postalCode>
+													<!-- [1..1] Идентификатор адреса по ФИАС -->
+													<fias:Address>
+														<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+														<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+														<!-- [1..1] Глобальный уникальный идентификатор дома -->
+														<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+													</fias:Address>
+												</addr>
+											</representedOrganization>
+										</assignedEntity>
+									</performer>
+									<!-- R [1..1] Сведения об отделении, где пребывал пациент -->
+									<participant typeCode="LOC">
+										<!-- R [1..1] -->
+										<participantRole classCode="SDLOC">
+											<!-- [1..1] Код отделения -->
+											<id root="1.2.643.5.1.13.13.12.2.66.6841.0.112721"/>
+											<!-- [0..1] -->
+											<playingEntity>
+												<!-- R [1..1] Наименование подразделения -->
+												<name>Гинекологическое отделение</name>
+											</playingEntity>
+										</participantRole>
+									</participant>
+									<!-- R [1..1] Профиль койки -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="6024" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Профиль койки" codeSystemVersion="1.95"/>
+											<!-- R [1..1] Значение поля -->
+											<value xsi:type="CD" code="39" codeSystem="1.2.643.5.1.13.13.11.1069" codeSystemName="Номенклатура коечного фонда медицинской организации" displayName="Гинекологические для взрослых" codeSystemVersion="4.4"/>
+										</observation>
+									</entryRelationship>
+									<!-- R [1..1] Код диагноза по МКБ -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="838" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Диагноз" codeSystemVersion="1.95"/>
+											<!-- R [1..1] Код МКБ -->
+											<value xsi:type="CD" code="O03.1" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Самопроизвольный аборт неполный, осложнившийся длительным или чрезмерным кровотечением" codeSystemVersion="2.20"/>
+										</observation>
+									</entryRelationship>
+									<!-- R [1..1] Код медицинского стандарта -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="9043" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Код медицинского стандарта" codeSystemVersion="1.95"/>
+											<!-- [1..1] Код медицинского стандарта -->
+											<value xsi:type="ST">13-666</value>
+										</observation>
+									</entryRelationship>
+									<!-- R [1..1] Код прерванного случая -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="9044" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Код прерванного случая" codeSystemVersion="1.95"/>
+											<!-- [1..1] Код прерванного случая -->
+											<value xsi:type="ST">6</value>
+										</observation>
+									</entryRelationship>
+									<!-- R [1..1] Вид оплаты -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="827" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Источник оплаты медицинской помощи" codeSystemVersion="1.95"/>
+											<!-- R [1..1] Вид оплаты -->
+											<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.11.1039" codeSystemName="Источники оплаты медицинской помощи" displayName="Средства обязательного медицинского страхования" codeSystemVersion="5.2"/>
+										</observation>
+									</entryRelationship>
+								</encounter>
+							</entry>
+						</section>
+					</component>
+				</section>
+			</component>
+			<!-- [0..1] СЕКЦИЯ: "Хирургические операции" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="SUR" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Хирургические операции" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Хирургические операции</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+					<!-- R [1..*] Сведения о проведенной операции -->
+					<entry>
+						<!-- R [1..1] -->
+						<procedure classCode="PROC" moodCode="EVN">
+							<!-- R [1..1] Код операции -->
+							<code code="A16.20.037" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemName="Номенклатура медицинских услуг" displayName="Искусственное прерывание беременности (аборт)" codeSystemVersion="2.10"/>
+							<!-- R [1..1] Наименование операции -->
+							<text>Искусственное прерывание беременности (аборт)</text>
+							<!-- R [1..1] Дата и время начала операции -->
+							<effectiveTime value="202205111420+0500"/>
+							<!-- R [1..1] Сведения о хирурге -->
+							<performer>
+								<!-- R [1..1] -->
+								<assignedEntity>
+									<!-- R [1..1] Уникальный идентификатор хирурга в МИС -->
+									<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.70" extension="73"/>
+									<!-- R [1..1] СНИЛС хирурга -->
+									<id root="1.2.643.100.3" extension="12345678971"/>
+									<!-- R [1..1] Код должности хирурга -->
+									<code code="122" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="Должности медицинских и фармацевтических работников" displayName="врач-хирург" codeSystemVersion="7.6"/>
+									<!-- [0..1] Адрес места работы хирурга -->
+									<addr>
+										<!-- R [1..1] Адрес (текстом) -->
+										<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+										<!-- R [1..1] Код субъекта РФ -->
+										<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+										<!-- [1..1] Почтовый индекс -->
+										<postalCode>620026</postalCode>
+										<!-- [1..1] Идентификатор адреса по ФИАС -->
+										<fias:Address>
+											<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+											<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+											<!-- [1..1] Глобальный уникальный идентификатор дома -->
+											<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+										</fias:Address>
+									</addr>
+									<!-- [0..*] Контакты хирурга -->
+									<telecom use="WP" value="tel:+73433123314"/>
+									<!-- R [1..1] -->
+									<assignedPerson>
+										<!-- R [1..1] ФИО хирурга -->
+										<name>
+											<!-- R [1..1] Фамилия -->
+											<family>Маркелов</family>
+											<!-- R [1..1] Имя -->
+											<given>Александр</given>
+											<!-- [0..1] Отчество -->
+											<identity:Patronymic>Николаевич</identity:Patronymic>
+										</name>
+									</assignedPerson>
+									<!-- [0..1] Сведения о медицинской организации, где работает хирург -->
+									<representedOrganization classCode="ORG">
+										<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+										<id root="1.2.643.5.1.13.13.12.2.66.6841" extension="1.2.643.5.1.13.13.12.2.66.6841.0.112699"/>
+										<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+										<name>Государственно Бюджетное Учреждение Здравоохранения Свердловской Области "Центральная городская клиническая больница № 1 город Екатеринбург"</name>
+										<!-- [0..*] Контакты медицинской организации или ИП -->
+										<telecom value="tel:+73433123314"/>
+										<!-- [0..1] Адрес медицинской организации или ИП -->
+										<addr>
+											<!-- R [1..1] Адрес (текстом) -->
+											<streetAddressLine>г. Екатеринбург, ул. Декабристов, 15</streetAddressLine>
+											<!-- R [1..1] Код субъекта РФ -->
+											<address:stateCode code="66" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemName="Субъекты Российской Федерации" displayName="Свердловская область" codeSystemVersion="6.3"/>
+											<!-- [1..1] Почтовый индекс -->
+											<postalCode>620026</postalCode>
+											<!-- [1..1] Идентификатор адреса по ФИАС -->
+											<fias:Address>
+												<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+												<fias:AOGUID>c060e2bb-14ff-4a48-9d80-91eee6e1cd94</fias:AOGUID>
+												<!-- [1..1] Глобальный уникальный идентификатор дома -->
+												<fias:HOUSEGUID>0f706dac-ff19-4d9b-a6b0-7d8b8cc3b905</fias:HOUSEGUID>
+											</fias:Address>
+										</addr>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+							<!-- R [1..1] Сведения об отделении, где проводилась операция -->
+							<participant typeCode="LOC">
+								<!-- R [1..1] -->
+								<participantRole classCode="SDLOC">
+									<!-- [1..1] Код отделения -->
+									<id root="1.2.643.5.1.13.13.12.2.66.6841.0.112699"/>
+									<!-- [0..1] -->
+									<playingEntity>
+										<!-- R [1..1] Наименование подразделения -->
+										<name>Хирургическое</name>
+									</playingEntity>
+								</participantRole>
+							</participant>
+							<!-- R [1..1] Признак основной операции -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="9045" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Признак основной операции" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Значение поля -->
+									<value xsi:type="BL" value="true"/>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..*] Сведения об осложнении -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="12383" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Интраоперационные осложнения" codeSystemVersion="1.95"/>
+									<!-- [1..1] Наименование осложнения -->
+									<text>Маточное кровотечение</text>
+									<!-- [1..1] Код осложнения -->
+									<value xsi:type="CD" code="2077" codeSystem="1.2.643.5.1.13.13.11.1485" codeSystemVersion="4.3" codeSystemName="Осложнения лечения" displayName="Кровотечение маточное"/>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..1] Сведения об анестезии -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<substanceAdministration classCode="SBADM" moodCode="EVN">
+									<!-- R [1..1] -->
+									<consumable typeCode="CSM">
+										<!-- R [1..1] -->
+										<manufacturedProduct classCode="MANU">
+											<!-- R [1..1] -->
+											<manufacturedLabeledDrug>
+												<!-- [1..1] Код вида анестезии -->
+												<code nullFlavor="NA"/>
+											</manufacturedLabeledDrug>
+										</manufacturedProduct>
+									</consumable>
+								</substanceAdministration>
+							</entryRelationship>
+							<!-- R [1..1] Использование специальной аппаратуры (эндоскопическая) -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код группы аппаратуры -->
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1048" codeSystemName="Учетные группы аппаратуры, используемой при операциях" displayName="Эндоскопическая" codeSystemVersion="1.1"/>
+									<!-- R [1..1] Признак использования -->
+									<value xsi:type="BL" value="true"/>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..1] Использование специальной аппаратуры (лазерная) -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код группы аппаратуры -->
+									<code code="1" codeSystem="1.2.643.5.1.13.13.11.1048" codeSystemName="Учетные группы аппаратуры, используемой при операциях" displayName="Лазерная" codeSystemVersion="1.1"/>
+									<!-- R [1..1] Признак использования -->
+									<value xsi:type="BL" value="false"/>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..1] Использование специальной аппаратуры (криогенная) -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код группы аппаратуры -->
+									<code code="2" codeSystem="1.2.643.5.1.13.13.11.1048" codeSystemName="Учетные группы аппаратуры, используемой при операциях" displayName="Криогенная" codeSystemVersion="1.1"/>
+									<!-- R [1..1] Признак использования -->
+									<value xsi:type="BL" value="false"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Использование специальной аппаратуры (рентгеновская) -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код группы аппаратуры -->
+									<code code="4" codeSystem="1.2.643.5.1.13.13.11.1048" codeSystemName="Учетные группы аппаратуры, используемой при операциях" displayName="Рентгеновская" codeSystemVersion="1.1"/>
+									<!-- R [1..1] Признак использования -->
+									<value xsi:type="BL" value="false"/>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..1] Вид оплаты -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="827" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Источник оплаты медицинской помощи" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Вид оплаты -->
+									<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.11.1039" codeSystemName="Источники оплаты медицинской помощи" displayName="Средства обязательного медицинского страхования" codeSystemVersion="5.2"/>
+								</observation>
+							</entryRelationship>
+						</procedure>
+					</entry>
+				</section>
+			</component>
+			<!-- R [1..1] СЕКЦИЯ: "Состояние при выписке" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="STATEDIS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Состояние при выписке" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Состояние при выписке</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+					<!-- R [1..1] Продолжительность госпитализации -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="9046" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Продолжительность госпитализации" codeSystemVersion="1.95"/>
+							<!-- R [1..1] Продолжительность госпитализации (койко-дней) -->
+							<value xsi:type="ST">22</value>
+						</observation>
+					</entry>
+					<!-- R [1..1] Результат госпитализации -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="818" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Результаты обращения (госпитализации)" codeSystemVersion="1.95"/>
+							<!-- R [1..1] Значение поля -->
+							<value xsi:type="CD" code="6" codeSystem="1.2.643.5.1.13.13.11.1046" codeSystemName="Результаты обращения" displayName="Летальный исход" codeSystemVersion="4.1"/>
+						</observation>
+					</entry>
+					<!-- R [1..1] Признак обследования на сифилис (RW 1) -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="9047" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Обследование на сифилис (RW 1)" codeSystemVersion="1.95"/>
+							<!-- R [1..1] Значение поля -->
+							<value xsi:type="BL" value="true"/>
+						</observation>
+					</entry>
+					<!-- R [1..1] Признак обследования на ВИЧ-инфекцию (AIDS 2) -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="9048" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Обследование на ВИЧ-инфекцию (AIDS 2)" codeSystemVersion="1.95"/>
+							<!-- R [1..1] Значение поля -->
+							<value xsi:type="BL" value="true"/>
+						</observation>
+					</entry>
+					<!-- [0..1] Основная причина смерти -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12440" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Причина смерти" codeSystemVersion="1.95"/>
+							<!-- [1..1] Код по МКБ-10 -->
+							<value xsi:type="CD" code="O08.1" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Длительное или массивное кровотечение, вызванное абортом, внематочной и молярной беременностью" codeSystemVersion="2.20"/>
+						</observation>
+					</entry>
+					<!-- R [1..4] Дефекты догоспитального этапа -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12439" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Дефекты оказания медицинской помощи" codeSystemVersion="1.95"/>
+							<!-- [1..1] Значение поля -->
+							<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.99.2.966" codeSystemVersion="1.1" codeSystemName="Дефекты догоспитального этапа" displayName="несвоевременность госпитализации"/>
+						</observation>
+					</entry>
+					<!-- R [1..4] Дефекты догоспитального этапа -->
+					<entry>
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12439" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Дефекты оказания медицинской помощи" codeSystemVersion="1.95"/>
+							<!-- [1..1] Значение поля -->
+							<value xsi:type="CD" code="2" codeSystem="1.2.643.5.1.13.13.99.2.966" codeSystemVersion="1.1" codeSystemName="Дефекты догоспитального этапа" displayName="недостаточный объем клинико-диагностического обследования"/>
+						</observation>
+					</entry>
+					<!-- R [1..1] СЕКЦИЯ: "Диагнозы" -->
+					<component>
+						<!-- R [1..1] -->
+						<section>
+							<!-- R [1..1] Код секции -->
+							<code code="DGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Диагнозы" codeSystemVersion="1.27"/>
+							<!-- R [1..1] Название секции -->
+							<title>Клинический заключительный диагноз</title>
+							<!-- R [1..1] Человекочитаемое наполнение секции -->
+							<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+							<!-- R [1..1] Сведения об основном заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="1" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Основное заболевание" codeSystemVersion="1.3"/>
+									<!-- R [1..1] Клинический диагноз -->
+									<text>{{dsc.value}}</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220511"/>
+									<!-- R [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="{{dsc.key}}" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="{{dsc.value}}" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="3" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения об осложнении -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="2" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Осложнение основного заболевания" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>Длительное или массивное кровотечение, вызванное абортом, внематочной и молярной беременностью</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220511"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="O08.1" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Длительное или массивное кровотечение, вызванное абортом, внематочной и молярной беременностью" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="3" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения об осложнении -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="2" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Осложнение основного заболевания" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>Случайный порез, укол, перфорация или кровотечение при выполнении хирургической и терапевтической процедуры</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220514"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="Y60" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Случайный порез, укол, перфорация или кровотечение при выполнении хирургической и терапевтической процедуры" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="3" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения о сопутствующем заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Сопутствующее заболевание" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>{{hiv.value}}</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20020315"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="{{hiv.key}}" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="{{hiv.value}}" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="3" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения о сопутствующем заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Сопутствующее заболевание" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>{{hiv.value}}</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20020315"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="{{hiv.key}}" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="{{hiv.value}}" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="3" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный клинический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+						</section>
+					</component>
+					<!-- [0..1] СЕКЦИЯ: "Патолого-анатомический диагноз" -->
+					<component>
+						<!-- R [1..1] -->
+						<section>
+							<!-- R [1..1] Код секции -->
+							<code code="PATHANATDGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Патолого-анатомический диагноз" codeSystemVersion="1.27"/>
+							<!-- R [1..1] Название секции -->
+							<title>Патологоанатомический диагноз</title>
+							<!-- R [1..1] Человекочитаемое наполнение секции -->
+							<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+							<!-- R [1..1] Сведения об основном заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="1" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Основное заболевание" codeSystemVersion="1.3"/>
+									<!-- R [1..1] Клинический диагноз -->
+									<text>Самопроизвольный аборт неполный, осложнившийся длительным или чрезмерным кровотечением</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220511"/>
+									<!-- R [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="O03.1" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Самопроизвольный аборт неполный, осложнившийся длительным или чрезмерным кровотечением" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="42" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный патологоанатомический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения об осложнении -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="2" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Осложнение основного заболевания" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>Длительное или массивное кровотечение, вызванное абортом, внематочной и молярной беременностью</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220511"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="O08.1" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Длительное или массивное кровотечение, вызванное абортом, внематочной и молярной беременностью" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="42" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный патологоанатомический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения об осложнении -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="2" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Осложнение основного заболевания" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>Случайный порез, укол, перфорация или кровотечение при выполнении хирургической и терапевтической процедуры</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20220514"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="Y60" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Случайный порез, укол, перфорация или кровотечение при выполнении хирургической и терапевтической процедуры" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="42" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный патологоанатомический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения о сопутствующем заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Сопутствующее заболевание" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>Сахарный диабет 1 типа</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20020315"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="E10" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Сахарный диабет 1 типа" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="42" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный патологоанатомический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+							<!-- R [1..*] Сведения о сопутствующем заболевании -->
+							<entry>
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Вид нозологической единицы диагноза -->
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Сопутствующее заболевание" codeSystemVersion="1.3"/>
+									<!-- [1..1] Клинический диагноз -->
+									<text>Другие витамин-B12-дефицитные анемии, связанные с питанием</text>
+									<!-- [0..1] Дата установления диагноза -->
+									<effectiveTime value="20020315"/>
+									<!-- [1..1] Код по МКБ-10 -->
+									<value xsi:type="CD" code="D51.3" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="Международная статистическая классификация болезней и проблем, связанных со здоровьем (10-й пересмотр)" displayName="Другие витамин-B12-дефицитные анемии, связанные с питанием" codeSystemVersion="2.20"/>
+									<!-- R [1..1] Степень обоснованности диагноза -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="42" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="Степень обоснованности диагноза" displayName="Заключительный патологоанатомический диагноз" codeSystemVersion="3.1"/>
+										</observation>
+									</entryRelationship>
+									<!-- [0..1] Срок беременности -->
+									<entryRelationship typeCode="COMP">
+										<!-- R [1..1] -->
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] -->
+											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- R [1..1] -->
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
+												<!-- R [1..1] -->
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+											</value>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entry>
+						</section>
+					</component>
+				</section>
+			</component>
+			<!-- [0..1] СЕКЦИЯ: "Связанные документы" -->
+			<component>
+				<!-- R [1..1] -->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="LINKDOCS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="Секции электронных медицинских документов" displayName="Связанные документы" codeSystemVersion="1.27"/>
+					<!-- R [1..1] Название секции -->
+					<title>Связанные документы</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>ЧЕЛОВЕКОЧИТАЕМОЕ НАПОЛНЕНИЕ</text>
+					<!-- R [1..*] Сведения о связанном документе [Направление] -->
+					<entry>
+						<!-- R [1..1] -->
+						<act classCode="ACT" moodCode="EVN">
+							<!-- R [1..1] Вид документа -->
+							<code code="3" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemName="Виды медицинской документации" displayName="Направление на госпитализацию, восстановительное лечение, обследование, консультацию" codeSystemVersion="5.6"/>
+							<!-- [0..1] Примечание к документу -->
+							<text>Направлен в ГБУЗ СО ЦГБ №1 с диагнозом K81.0 ЖБК: Острый холецистит на хирургическое лечение</text>
+							<!-- R [1..1] Дата выдачи документа -->
+							<effectiveTime value="20220506"/>
+							<!-- [0..1] Серия документа -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="11002" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Серия документа" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Серия документа -->
+									<value xsi:type="ST">113</value>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Номер документа -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="11003" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Номер документа" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Номер документа -->
+									<value xsi:type="ST">113</value>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Форма документа -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="6058" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Форма документа" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Тип документа (бумажный, электронный) -->
+									<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.99.2.750" codeSystemName="Типы документов" displayName="Электронное" codeSystemVersion="1.1"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Сведения о нетрудоспособности -->
+							<!-- [0..1] Возраст лица, ухаживающего за пациентом -->
+							<!-- [0..1] Пол лица, ухаживающего за пациентом -->
+							<!-- R [1..1] Ссылка на документ -->
+							<reference typeCode="REFR">
+								<!-- R [1..1] -->
+								<externalDocument classCode="DOCCLIN" moodCode="EVN">
+									<!-- [1..1] Уникальный идентификатор документа в МИС -->
+									<id root="1.2.643.5.1.13.13.12.2.66.6949.100.1.1.51" extension="5100"/>
+								</externalDocument>
+							</reference>
+						</act>
+					</entry>
+					<!-- R [1..*] Сведения о связанном документе [Листок нетрудоспособности] -->
+					<entry>
+						<!-- R [1..1] -->
+						<act classCode="ACT" moodCode="EVN">
+							<!-- R [1..1] Вид документа -->
+							<code code="213" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemName="Виды медицинской документации" displayName="Листок нетрудоспособности" codeSystemVersion="5.6"/>
+							<!-- [0..1] Примечание к документу -->
+							<text>По уходу за больным</text>
+							<!-- R [1..1] Дата выдачи документа -->
+							<effectiveTime value="20220509"/>
+							<!-- [0..1] Серия документа -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="11002" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Серия документа" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Серия документа -->
+									<value xsi:type="ST">257</value>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Номер документа -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="11003" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Номер документа" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Номер документа -->
+									<value xsi:type="ST">741422304</value>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Форма документа -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="6058" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Форма документа" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Тип документа (бумажный, электронный) -->
+									<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.99.2.750" codeSystemName="Типы документов" displayName="Электронное" codeSystemVersion="1.1"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Сведения о нетрудоспособности -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="6052" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Срок нетрудоспособности" codeSystemVersion="1.95"/>
+									<!-- R [1..1] Сроки нетрудоспособности -->
+									<effectiveTime>
+										<!-- R [1..1] Дата начала срока нетрудоспособности -->
+										<low value="20220509"/>
+										<!-- [1..1] Дата окончания срока нетрудоспособности -->
+										<high value="20220531"/>
+									</effectiveTime>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Возраст лица, ухаживающего за пациентом -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="9049" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Возраст лица, ухаживающего за пациентом" codeSystemVersion="1.95"/>
+									<!-- [1..1] Возраст (полных лет) -->
+									<value xsi:type="INT" value="35"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Пол лица, ухаживающего за пациентом -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1] -->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="9050" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="Кодируемые поля CDA документов" displayName="Пол лица, ухаживающего за пациентом" codeSystemVersion="1.95"/>
+									<!-- [1..1] Пол -->
+									<value xsi:type="CD" code="1" codeSystem="1.2.643.5.1.13.13.11.1040" codeSystemName="Пол пациента" displayName="Мужской" codeSystemVersion="2.1"/>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..1] Ссылка на документ -->
+							<reference typeCode="REFR">
+								<!-- R [1..1] -->
+								<externalDocument classCode="DOCCLIN" moodCode="EVN">
+									<!-- [1..1] Уникальный идентификатор документа в МИС -->
+									<id root="1.2.643.5.1.13.13.12.2.66.6841.100.1.1.51" extension="5101"/>
+								</externalDocument>
+							</reference>
+						</act>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>

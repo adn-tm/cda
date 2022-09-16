@@ -9,7 +9,7 @@ services:
     environment:
       # - KAFKA_TOPIC=semd.raw
       # - KAFKA_BROKERS=kafka:9092 # format: "kafka-1:9092, kafka-2:9092"
-      - CDA_GEN_SRC=./templates/66
+      - CDA_GEN_SRC=./templates/f66u_stat_f13 # ./templates/f66u_oesr_r1
       - CDA_GEN_MSG_sourceType=f66u
       - CDA_GEN_MSG_clientId=cda-generator
       - CDA_GEN_DST=/mnt/dist

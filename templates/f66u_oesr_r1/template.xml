@@ -823,9 +823,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -882,9 +882,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1559,7 +1559,7 @@
 									<!-- R [1..1] Вид нозологической единицы диагноза -->
 									<code code="1" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="Виды нозологических единиц диагноза" displayName="Основное заболевание" codeSystemVersion="1.3"/>
 									<!-- R [1..1] Клинический диагноз -->
-									<text>Самопроизвольный аборт неполный, осложнившийся длительным или чрезмерным кровотечением</text>
+									<text>{{dsc.value}}</text>
 									<!-- [0..1] Дата установления диагноза -->
 									<effectiveTime value="20220511"/>
 									<!-- R [1..1] Код по МКБ-10 -->
@@ -1573,18 +1573,18 @@
 										</observation>
 									</entryRelationship>
 									<!-- [0..1] Срок беременности -->
-									<entryRelationship typeCode="COMP">
+									<!-- <entryRelationship typeCode="COMP"> -->
 										<!-- R [1..1] -->
-										<observation classCode="OBS" moodCode="EVN">
+										<!-- <observation classCode="OBS" moodCode="EVN"> -->
 											<!-- R [1..1] -->
-											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
+											<!-- <code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/> -->
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<!-- <value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk"> -->
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
-											</value>
-										</observation>
-									</entryRelationship>
+												<!-- <translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/> -->
+											<!-- </value> -->
+										<!-- </observation> -->
+									<!-- </entryRelationship> -->
 								</observation>
 							</entry>
 							<!-- R [1..*] Сведения об осложнении -->
@@ -1614,9 +1614,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1649,9 +1649,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1684,9 +1684,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1719,9 +1719,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1766,9 +1766,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1801,9 +1801,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1836,9 +1836,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1871,9 +1871,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>
@@ -1906,9 +1906,9 @@
 											<!-- R [1..1] -->
 											<code code="8004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="1.95" codeSystemName="Кодируемые поля CDA документов" displayName="Срок беременности"/>
 											<!-- R [1..1] -->
-											<value xsi:type="PQ" value="11" unit="wk">
+											<value xsi:type="PQ" value="{{pregnancyTerm}}" unit="wk">
 												<!-- R [1..1] -->
-												<translation value="11" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
+												<translation value="{{pregnancyTerm}}" code="520" displayName="нед" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="3.8" codeSystemName="Единицы измерения"/>
 											</value>
 										</observation>
 									</entryRelationship>

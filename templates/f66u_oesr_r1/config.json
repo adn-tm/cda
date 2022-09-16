@@ -31,6 +31,10 @@
         ]
       }
     },
+    "pregnancyTerm":{
+      "type":"random",
+      "params":[11,30]
+    },
     "dsc": {
       "type": "random",
       "params": [
