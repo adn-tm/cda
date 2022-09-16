@@ -61,7 +61,7 @@ function rand(cnt, finish) {
     }
 
     if (finish && cnt < finish) {
-        return Math.trunc(Math.random() * (finish - cnt) + 1);
+        return Math.trunc(Math.random() * (finish - cnt) + cnt + 1);
     }
     if (Array.isArray(cnt)) {
         if (!cnt[0].num || !cnt[0].text) return cnt[Math.round(Math.random() * cnt.length)];
