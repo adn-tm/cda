@@ -9,3 +9,5 @@ Dockerfile
 dist
 
 ~$*
+.xlsx
+.xls
